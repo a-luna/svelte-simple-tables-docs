@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-netlify';
 import { mdsvex } from 'mdsvex';
 import preprocess from 'svelte-preprocess';
 
@@ -17,12 +17,12 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		target: '#svelte',
-		// prerender: {
-		// 	crawl: false,
-		// 	enabled: true,
-		// 	entries: ['*'],
-		// 	onError: 'continue'
-		// },
+		prerender: {
+			crawl: false,
+			enabled: true,
+			entries: ['*'],
+			onError: 'continue'
+		},
 		vite: {
 			optimizeDeps: {
 				include: ['highlight.js/lib/core']
