@@ -29,6 +29,7 @@
 
 <ul class="toc">
 	<li><a href="#features">Features</a></li>
+	<li><a href="#interactive-examples">Interactive Examples</a></li>
 	<li><a href="#installation">Installation</a></li>
 	<li>
 		<a href="#usage">Usage</a>
@@ -55,8 +56,14 @@ from an array of typed objects.
 - **Automatically responsive.** Tables become horizontally scrollable without breaking page layout.
 - **Four color themes provided**. Users can adjust every detail of existing themes or create new themes with CSS custom properties.
 
-<div class="cta my-3">
-	<span>Interactive Demos:</span> <a sveltekit:prefetch href="/basic">Basic</a><a sveltekit:prefetch href="/complex">Complex</a>
+<div class="flex-header flex flex-row">
+	<span class="emoji">🥳</span><h2 id="interactive-examples">Interactive Examples</h2>
+</div>
+
+<div class="cta">
+	<a sveltekit:prefetch href="/basic">Example with Simple Data Set</a>
+	<br>
+	<a sveltekit:prefetch href="/complex">Example with Larger Data Set</a>
 	<br>
 	<p class="coming-soon">Coming Soon: CSS Theme Editor</p>
 </div>
@@ -210,6 +217,10 @@ The following CSS custom properties can be applied either at the `body` element 
 <Highlight language={css} code={themeCSSVariables()} />
 
 <style lang="postcss">
+	:root {
+		background-color: var(--black1);
+	}
+
 	:global(body) {
 		background-color: var(--black1);
 	  color: var(--white1);
@@ -346,6 +357,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	  font-family: monospace, monospace;
 	  _font-family: 'courier new', monospace;
 	  font-size: 0.85em;
+		line-height: 1.6;
 		padding: 0.2rem 0.2rem;
 		border-radius: 4px;
 	}
@@ -432,6 +444,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	}
 
 	:global(table) {
+		font-size: 0.9rem;
 	  border-collapse: collapse;
 	  border-spacing: 0;
 		color: var(--light-gray2);
@@ -500,25 +513,44 @@ The following CSS custom properties can be applied either at the `body` element 
 	}
   
   .badges > img,
-	.badges > a {
+	.badges > a,
+	.badges > a:hover,
+	.badges > a:active {
     width: auto;
     display: inline-block;
     margin: 0.25rem;
+		padding: none;
+		background-color: transparent;
   }
 	
+	.flex-header {
+	  margin: 2.5rem 0 0.75rem 0;
+	}
+	
+	.flex-header h2 {
+		margin: 0
+	}
+	
+	.flex-header .emoji {
+		margin: auto 0.5rem auto 0;
+	}
+	
 	.cta {
+		width: min-content;
+		white-space: nowrap;
+		margin: 2rem auto;
 		font-size: 1.3rem;
+		text-align: center;
 		background-color: var(--black2);
-		padding: 1.5rem;
+		padding: 0.75rem;
 		border: 2px solid var(--indigo2);
 	}
 	
 	.cta > * {
-		margin-right: 0.5rem;
+		margin: 0.5rem 0;
 	}
 	
 	.coming-soon {
-		margin: 0.5rem 0 0 0;
 		font-style: italic;
 		color: var(--gray4);
 	}

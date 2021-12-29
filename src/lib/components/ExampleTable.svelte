@@ -5,18 +5,19 @@
 		getPitchFxTypeCode,
 		getTableSettingsCode
 	} from '$lib/codeExamples/CodeViewer';
+	import TableTester from '$lib/components/TableTester/TableTester.svelte';
+	import TableTesterMobile from '$lib/components/TableTester/TableTesterMobile.svelte';
+	import { active } from '$lib/stores/activeContent';
 	import { alert } from '$lib/stores/alert';
 	import { dataSet } from '$lib/stores/dataSet';
 	import type { CodeViewerContent, DataSet } from '$lib/types';
 	import SimpleTable from '@a-luna/svelte-simple-tables';
+	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type {
 		ColumnSettings,
 		TableSettings,
 		TableState
 	} from '@a-luna/svelte-simple-tables/types';
-	import CodeViewer from './CodeViewer.svelte';
-	import ContentSelector from './ContentSelector.svelte';
-	import TableSettingsForm from './TableSettingsForm/TableSettingsForm.svelte';
 
 	type T = $$Generic;
 
@@ -25,11 +26,9 @@
 	export let columnSettings: ColumnSettings<T>[];
 	export let tableSettings: TableSettings;
 	export let tableState: TableState;
-	let active: CodeViewerContent = 'settings';
 
 	$tableState.sortType = columnSettings.find((c) => c.propName === $tableState.sortBy).propType;
-	$: showCopyButton = active !== 'settings';
-	$: code = getCodeExample(active, $tableState, $dataSet);
+	$: code = getCodeExample($active, $tableState, $dataSet);
 
 	export const getCodeExample = (
 		content: CodeViewerContent,
@@ -63,14 +62,16 @@
 <div class="breadcrumbs mb-4">
 	<a href="/">Home</a> <span class="arrow">&gt;</span> <span class="current">{title}</span>
 </div>
-<ContentSelector bind:active on:copyCode={() => copyCodeToClipboard()} />
-<div class:copy-button-shown={showCopyButton} class="tab-content border-solid border-2 mb-4">
-	{#if active === 'settings'}
-		<TableSettingsForm {columnSettings} bind:tableState />
-	{:else}
-		<CodeViewer {code} {active} />
-	{/if}
-</div>
+{#if $pageWidth.current < 768}
+	<TableTesterMobile
+		bind:tableState
+		{columnSettings}
+		{code}
+		on:copyCode={() => copyCodeToClipboard()}
+	/>
+{:else}
+	<TableTester bind:tableState {columnSettings} {code} on:copyCode={() => copyCodeToClipboard()} />
+{/if}
 <SimpleTable {data} {columnSettings} {tableSettings} bind:tableState />
 
 <style lang="postcss">
@@ -114,22 +115,5 @@
 
 	.breadcrumbs .current {
 		color: var(--white4);
-	}
-
-	.tab-content {
-		background-color: var(--black4);
-		border-top-left-radius: 0;
-		border-top-right-radius: 16px;
-		border-bottom-left-radius: 16px;
-		border-bottom-right-radius: 16px;
-		border-color: hsla(var(--p) / 1);
-	}
-
-	.tab-content.copy-button-shown {
-		border-top-left-radius: 16px;
-		border-top-right-radius: 0;
-		border-bottom-left-radius: 16px;
-		border-bottom-right-radius: 16px;
-		border-color: hsla(var(--a) / 1);
 	}
 </style>

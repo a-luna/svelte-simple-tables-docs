@@ -1,5 +1,8 @@
 import type { ThemeCssVariables } from '$lib/types';
 
+export const HSL_COLOR_REGEX =
+	/hsl\((?<hue>\d{1,3}), (?<saturation>\d{1,3})%, (?<lightness>\d{1,3})%\)/;
+
 export const LightThemeCssVariables: ThemeCssVariables = {
 	fontSize: '13px',
 	tableWrapperBorderWidth: '2px',

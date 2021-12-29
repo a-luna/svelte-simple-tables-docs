@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { TableState } from '@a-luna/svelte-simple-tables/types';
 	import Svelecte from 'svelecte/src/Svelecte.svelte';
 
@@ -26,6 +27,7 @@
 			searchable={false}
 			options={pageSizeMenuItems}
 			on:change={() => handlePageSizeChanged()}
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
 		/>
 	</div>
 </label>

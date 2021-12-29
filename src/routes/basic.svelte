@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TableTester from '$lib/components/TableTester.svelte';
+	import ExampleTable from '$lib/components/ExampleTable.svelte';
 	import { dataSet } from '$lib/stores/dataSet';
 	import { vaxDataColumnSettings } from '$lib/vax/columnSettings';
 	import { vaxData } from '$lib/vax/data';
@@ -28,7 +28,7 @@
 	$: $dataSet = 'vax';
 </script>
 
-<TableTester
+<ExampleTable
 	title={'Basic Example'}
 	data={vaxData}
 	columnSettings={vaxDataColumnSettings}

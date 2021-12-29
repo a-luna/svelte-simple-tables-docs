@@ -25,6 +25,7 @@ specifiers:
   svelte: ^3.44.3
   svelte-check: ^2.2.11
   svelte-highlight: ^5.1.4
+  svelte-icons: ^2.1.0
   svelte-preprocess: ^4.10.1
   tailwindcss: ^2.2.19
   tslib: ^2.3.1
@@ -57,6 +58,7 @@ devDependencies:
   svelte: 3.44.3
   svelte-check: 2.2.11_780263383bd82c24c3a39ba88c8c2aa6
   svelte-highlight: 5.1.4
+  svelte-icons: 2.1.0
   svelte-preprocess: 4.10.1_2744a29ed8b290f6e2130b2432ae0c01
   tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
   tslib: 2.3.1
@@ -2472,6 +2474,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.44.3
+    dev: true
+
+  /svelte-icons/2.1.0:
+    resolution: {integrity: sha512-rHPQjweEc9fGSnvM0/4gA3pDHwyZyYsC5KhttCZRhSMJfLttJST5Uq0B16Czhw+HQ+HbSOk8kLigMlPs7gZtfg==}
     dev: true
 
   /svelte-preprocess/4.10.1_2744a29ed8b290f6e2130b2432ae0c01:

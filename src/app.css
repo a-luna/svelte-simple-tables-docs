@@ -94,38 +94,9 @@
 	--pink3: hsl(315, 100%, 55%);
 }
 
-body.light-mode {
-	--button-disabled-bg-color: var(--gray1);
-	--button-disabled-text-color: var(--light-gray1);
-
-	--bg-color-primary: var(--pri-color);
-	--bg-color-secondary: var(--sec-color);
-	--bg-color-red: var(--red2);
-	--bg-color-pink: var(--pink3);
-	--bg-color-orange: var(--orange2);
-	--bg-color-teal: var(--blue-green1);
-	--bg-color-green: var(--green2);
-	--bg-color-blue: var(--blue3);
-	--bg-color-gray: var(--gray4);
-	--bg-color-yellow: var(--yellow-green2);
-	--bg-color-indigo: var(--indigo2);
-
-	--fg-color-on-primary: var(--color-on-pri);
-	--fg-color-on-secondary: var(--color-on-sec);
-	--fg-color-on-red: var(--white1);
-	--fg-color-on-pink: var(--white1);
-	--fg-color-on-orange: var(--white1);
-	--fg-color-on-teal: var(--white1);
-	--fg-color-on-green: var(--white1);
-	--fg-color-on-blue: var(--white1);
-	--fg-color-on-gray: var(--white1);
-	--fg-color-on-yellow: var(--white1);
-	--fg-color-on-indigo: var(--white1);
-}
-
-body.dark-mode {
-	--button-disabled-bg-color: var(--gray2);
-	--button-disabled-text-color: var(--dark-gray3);
+body {
+	--button-disabled-bg-color: var(--light-gray1);
+	--button-disabled-text-color: var(--black3);
 
 	--bg-color-primary: var(--pri-color);
 	--bg-color-secondary: var(--sec-color);
@@ -135,9 +106,9 @@ body.dark-mode {
 	--bg-color-teal: var(--blue-green2);
 	--bg-color-green: var(--yellow-green1);
 	--bg-color-blue: var(--blue3);
-	--bg-color-gray: var(--gray4);
+	--bg-color-gray: var(--white1);
 	--bg-color-yellow: var(--yellow3);
-	--bg-color-indigo: var(--indigo2);
+	--bg-color-indigo: var(--indigo3);
 
 	--fg-color-on-primary: var(--color-on-pri);
 	--fg-color-on-secondary: var(--color-on-sec);
@@ -152,8 +123,13 @@ body.dark-mode {
 	--fg-color-on-indigo: var(--black4);
 }
 
+#settings-form {
+	width: 350px;
+}
+
 #settings-form .input {
 	height: 38px;
+	width: 175px;
 	background-color: hsl(228, 14.3%, 93.1%);
 	color: hsl(219, 14.1%, 27.8%);
 }
@@ -167,6 +143,10 @@ body.dark-mode {
 	font-size: 0.9rem;
 	font-weight: 500;
 	white-space: nowrap;
+}
+
+#settings-form .mobile .label-text {
+	flex: 0 0 120px;
 }
 
 #settings-form .left-col .label-text {
@@ -184,6 +164,16 @@ body.dark-mode {
 .checkbox-wrapper,
 .radio-wrapper {
 	height: 38px;
+}
+
+@media screen and (min-width: 768px) {
+	#settings-form {
+		width: auto;
+	}
+
+	#settings-form .input {
+		width: 200px;
+	}
 }
 
 @media screen and (min-width: 1024px) {

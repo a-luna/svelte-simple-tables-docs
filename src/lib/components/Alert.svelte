@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { alert } from '$lib/stores/alert';
 	import { onDestroy } from 'svelte';
-	import { fade,slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 
 	export let duration: number = 3000;
 	let timeout: NodeJS.Timeout;
 	let shown: boolean;
 
-	$: alertType = $alert.state === 'none' ? 'alert' : `alert alert-${$alert.state}`;
 	$: handleMessageChanged($alert.message);
 
 	function handleMessageChanged(message: string) {
@@ -32,7 +31,7 @@
 		in:slide={{ duration: 1000 }}
 		out:fade={{ duration: 500 }}
 		on:click={() => (shown = false)}
-		class={alertType}
+		class="alert alert-{$alert.state}"
 	>
 		<div class="flex-1">
 			{#if $alert.state === 'success'}
@@ -95,6 +94,20 @@
 						d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
 					/>
 				</svg>
+			{:else}
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="#2196f3"
+					class="w-6 h-6 mx-2"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
 			{/if}
 			<span>{$alert.message}</span>
 		</div>
@@ -103,37 +116,39 @@
 
 <style lang="postcss">
 	.alert {
-		--tw-bg-opacity: 1;
-		--tw-bg-opacity: 0.1;
-		--tw-text-opacity: 1;
 		position: absolute;
 		margin-left: auto;
 		margin-right: auto;
 		left: 0;
 		right: 0;
 		text-align: center;
-		z-index: 10;
+		z-index: 20;
 		width: min-content;
 		white-space: nowrap;
 	}
 
+	:global(.alert-none) {
+		background-color: hsla(var(--b2) / 1);
+		color: hsla(var(--bc) / 1);
+	}
+
 	:global(.alert-success) {
-		background-color: hsla(var(--su) / var(--tw-bg-opacity, 1));
-		color: hsla(var(--su) / var(--tw-text-opacity, 1));
+		background-color: hsla(var(--su) / 0.25);
+		color: hsla(var(--su) / 1);
 	}
 
 	:global(.alert-info) {
-		background-color: hsla(var(--in) / var(--tw-bg-opacity, 1));
-		color: hsla(var(--in) / var(--tw-text-opacity, 1));
+		background-color: hsla(var(--in) / 0.25);
+		color: hsla(var(--in) / 1);
 	}
 
 	:global(.alert-warning) {
-		background-color: hsla(var(--wa) / var(--tw-bg-opacity, 1));
-		color: hsla(var(--wa) / var(--tw-text-opacity, 1));
+		background-color: hsla(var(--wa) / 0.25);
+		color: hsla(var(--wa) / 1);
 	}
 
 	:global(.alert-error) {
-		background-color: hsla(var(--er) / var(--tw-bg-opacity, 1));
-		color: hsla(var(--er) / var(--tw-text-opacity, 1));
+		background-color: hsla(var(--er) / 0.25);
+		color: hsla(var(--er) / 1);
 	}
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TableTester from '$lib/components/TableTester.svelte';
+	import ExampleTable from '$lib/components/ExampleTable.svelte';
 	import { pfxDataColumnSettings } from '$lib/pfx/columnSettings';
 	import { pfxData } from '$lib/pfx/data';
 	import { dataSet } from '$lib/stores/dataSet';
@@ -29,7 +29,7 @@
 	$: $dataSet = 'pfx';
 </script>
 
-<TableTester
+<ExampleTable
 	title={'Complex Example'}
 	data={pfxData}
 	columnSettings={pfxDataColumnSettings}

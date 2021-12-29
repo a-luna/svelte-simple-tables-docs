@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { TableState, TableTheme } from '@a-luna/svelte-simple-tables/types';
 	import Svelecte, { addFormatter } from 'svelecte/src/Svelecte.svelte';
 
@@ -33,6 +34,7 @@
 			searchable={false}
 			options={themes}
 			renderer="theme-items"
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
 		/>
 	</div>
 </label>

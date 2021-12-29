@@ -1,45 +1,44 @@
 <script lang="ts">
+	import { active } from '$lib/stores/activeContent';
 	import { dataSet } from '$lib/stores/dataSet';
-	import type { CodeViewerContent } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 
-	export let active: CodeViewerContent = 'settings';
 	const dispatch = createEventDispatcher();
 
-	$: showCopyButton = active !== 'settings';
+	$: showCopyButton = $active !== 'settings';
 </script>
 
 <div class:copy-button-shown={showCopyButton} class="flex flex-row flex-nowrap justify-between">
 	<div class="tabs">
 		<span
 			class="content-tab"
-			class:selected-tab={active === 'settings'}
-			on:click={() => (active = 'settings')}>Settings</span
+			class:selected-tab={$active === 'settings'}
+			on:click={() => ($active = 'settings')}>Settings</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={active === 'svelte-component'}
-			on:click={() => (active = 'svelte-component')}>App.svelte</span
+			class:selected-tab={$active === 'svelte-component'}
+			on:click={() => ($active = 'svelte-component')}>App.svelte</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={active === 'column-settings'}
-			on:click={() => (active = 'column-settings')}>columnSettings.ts</span
+			class:selected-tab={$active === 'column-settings'}
+			on:click={() => ($active = 'column-settings')}>columnSettings.ts</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={active === 'data'}
-			on:click={() => (active = 'data')}>data.ts</span
+			class:selected-tab={$active === 'data'}
+			on:click={() => ($active = 'data')}>data.ts</span
 		>
 		{#if $dataSet === 'pfx'}
 			<span
 				class="content-tab"
-				class:selected-tab={active === 'pitchfx'}
-				on:click={() => (active = 'pitchfx')}>PitchFx.ts</span
+				class:selected-tab={$active === 'pitchfx'}
+				on:click={() => ($active = 'pitchfx')}>PitchFx.ts</span
 			>
 		{/if}
 	</div>
-	{#if active !== 'settings'}
+	{#if $active !== 'settings'}
 		<div
 			class="text-sm btn-accent leading-none mt-auto flex-none copy-button cursor-pointer py-2 px-4"
 			on:click={() => dispatch('copyCode')}

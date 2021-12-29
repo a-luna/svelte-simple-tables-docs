@@ -1,19 +1,19 @@
 <script lang="ts">
+	import FullWidthCheckbox from '$lib/components/TableSettingsForm/Checkboxes/FullWidthCheckbox.svelte';
+	import PaginatedCheckbox from '$lib/components/TableSettingsForm/Checkboxes/PaginatedCheckbox.svelte';
+	import ShowHeaderCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowHeaderCheckbox.svelte';
+	import ShowSortDescriptionCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowSortDescriptionCheckbox.svelte';
+	import TableWrapperCheckbox from '$lib/components/TableSettingsForm/Checkboxes/TableWrapperCheckbox.svelte';
+	import PageNavFormatSelector from '$lib/components/TableSettingsForm/RadioButtons/PageNavFormatSelector.svelte';
+	import PageRangeFormatSelector from '$lib/components/TableSettingsForm/RadioButtons/PageRangeFormatSelector.svelte';
+	import SortDirectionSelector from '$lib/components/TableSettingsForm/RadioButtons/SortDirectionSelector.svelte';
+	import PageSizeSelector from '$lib/components/TableSettingsForm/Selectors/PageSizeSelector.svelte';
+	import SortByColumnSelector from '$lib/components/TableSettingsForm/Selectors/SortByColumnSelector.svelte';
+	import ThemeSelector from '$lib/components/TableSettingsForm/Selectors/ThemeSelector.svelte';
+	import RowTypeTextField from '$lib/components/TableSettingsForm/TextFields/RowTypeTextField.svelte';
+	import TableHeaderTextField from '$lib/components/TableSettingsForm/TextFields/TableHeaderTextField.svelte';
 	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
-	import FullWidthCheckbox from './Checkboxes/FullWidthCheckbox.svelte';
-	import PaginatedCheckbox from './Checkboxes/PaginatedCheckbox.svelte';
-	import ShowHeaderCheckbox from './Checkboxes/ShowHeaderCheckbox.svelte';
-	import ShowSortDescriptionCheckbox from './Checkboxes/ShowSortDescriptionCheckbox.svelte';
-	import TableWrapperCheckbox from './Checkboxes/TableWrapperCheckbox.svelte';
-	import PageNavFormatSelector from './RadioButtons/PageNavFormatSelector.svelte';
-	import PageRangeFormatSelector from './RadioButtons/PageRangeFormatSelector.svelte';
-	import SortDirectionSelector from './RadioButtons/SortDirectionSelector.svelte';
-	import PageSizeSelector from './Selectors/PageSizeSelector.svelte';
-	import SortByColumnSelector from './Selectors/SortByColumnSelector.svelte';
-	import ThemeSelector from './Selectors/ThemeSelector.svelte';
-	import RowTypeTextField from './TextFields/RowTypeTextField.svelte';
-	import TableHeaderTextField from './TextFields/TableHeaderTextField.svelte';
 
 	type T = $$Generic;
 

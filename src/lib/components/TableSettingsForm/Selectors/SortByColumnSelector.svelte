@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SelectMenuItem } from '$lib/types';
+	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
 	import { getDefaultColHeader } from '@a-luna/svelte-simple-tables/util';
 	import Svelecte from 'svelecte/src/Svelecte.svelte';
@@ -40,6 +41,7 @@
 			searchable={false}
 			options={sortByOptions}
 			on:change={(e) => handleSortByChanged(e.detail)}
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
 		/>
 	</div>
 </label>
