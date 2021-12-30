@@ -60,13 +60,11 @@ from an array of typed objects.
 	<span class="emoji">🥳</span><h2 id="interactive-examples">Interactive Examples</h2>
 </div>
 
-<div class="cta">
-	<a sveltekit:prefetch href="/basic">Example with Simple Data Set</a>
-	<br>
-	<a sveltekit:prefetch href="/complex">Example with Larger Data Set</a>
-	<br>
-	<p class="coming-soon">Coming Soon: CSS Theme Editor</p>
-</div>
+<ul class="examples">
+	<li><a sveltekit:prefetch href="/basic">Example 1: Simple Data Set</a></li>
+	<li><a sveltekit:prefetch href="/complex">Example 2: Larger, Complex Data Set</a></li>
+	<li><span class="coming-soon">Coming Soon: CSS Theme Editor</span></li>
+</ul>
 
 ## Installation
 
@@ -230,7 +228,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	a,
 	a:visited {
     color: var(--white1);
-    box-shadow: inset 0 -2px 0 var(--blue-green2);
+    box-shadow: inset 0 -1.5px 0 var(--blue-green2);
     text-decoration: none;
 	}
 
@@ -535,24 +533,13 @@ The following CSS custom properties can be applied either at the `body` element 
 		margin: auto 0.5rem auto 0;
 	}
 	
-	.cta {
-		width: min-content;
-		white-space: nowrap;
-		margin: 2rem auto;
+	.examples {
 		font-size: 1.3rem;
-		text-align: center;
-		background-color: var(--black2);
-		padding: 0.75rem;
-		border: 2px solid var(--indigo2);
-	}
-	
-	.cta > * {
-		margin: 0.5rem 0;
 	}
 	
 	.coming-soon {
 		font-style: italic;
-		color: var(--gray4);
+		color: var(--gray1);
 	}
 
 	@media only screen and (min-width: 480px) {
