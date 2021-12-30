@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import {
 		getColumnSettingsCode,
 		getDataCode,
@@ -60,7 +61,7 @@
 </script>
 
 <div class="breadcrumbs mb-4">
-	<a href="/">Home</a> <span class="arrow">&gt;</span> <span class="current">{title}</span>
+	<a href="{base}/">Home</a> <span class="arrow">&gt;</span> <span class="current">{title}</span>
 </div>
 {#if $pageWidth.current < 768}
 	<TableTesterMobile

@@ -23,6 +23,10 @@ const config = {
 			entries: ['*'],
 			onError: 'continue'
 		},
+		paths: {
+			assets: '',
+			base: '/svelte-simple-tables'
+		},
 		vite: {
 			optimizeDeps: {
 				include: ['highlight.js/lib/core']
