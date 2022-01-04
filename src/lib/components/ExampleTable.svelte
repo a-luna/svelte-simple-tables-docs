@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import {
 		getColumnSettingsCode,
 		getDataCode,
@@ -61,7 +60,7 @@
 </script>
 
 <div class="breadcrumbs mb-4">
-	<a href="{base}/">Home</a> <span class="arrow">&gt;</span> <span class="current">{title}</span>
+	<a href="/">Home</a> <span class="arrow">&gt;</span> <span class="current">{title}</span>
 </div>
 {#if $pageWidth.current < 768}
 	<TableTesterMobile
@@ -88,7 +87,7 @@
 	.breadcrumbs a,
 	.breadcrumbs a:visited {
 		color: var(--white4);
-		box-shadow: inset 0 -2px 0 var(--indigo3);
+		box-shadow: inset 0 -5px 0 var(--indigo3);
 		text-decoration: none;
 	}
 

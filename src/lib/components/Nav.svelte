@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-
 	let hidden: boolean = true;
 </script>
 
@@ -23,7 +21,7 @@
 		<li>
 			<a
 				sveltekit:prefetch
-				href="{base}/"
+				href="/"
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Home</a
 			>
@@ -31,7 +29,7 @@
 		<li>
 			<a
 				sveltekit:prefetch
-				href="{base}/basic"
+				href="/basic"
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Basic Example</a
 			>
@@ -39,7 +37,7 @@
 		<li>
 			<a
 				sveltekit:prefetch
-				href="{base}/complex"
+				href="/complex"
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Complex Example</a
 			>
@@ -47,7 +45,7 @@
 		<li>
 			<a
 				sveltekit:prefetch
-				href="{base}/theme_editor"
+				href="/theme_editor"
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>CSS Theme Editor</a
 			>
@@ -84,7 +82,7 @@
 				<li class="mb-1">
 					<a
 						sveltekit:prefetch
-						href="{base}/"
+						href="/"
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Home</a
 					>
@@ -92,7 +90,7 @@
 				<li class="mb-1">
 					<a
 						sveltekit:prefetch
-						href="{base}/basic"
+						href="/basic"
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Basic Example</a
 					>
@@ -100,7 +98,7 @@
 				<li class="mb-1">
 					<a
 						sveltekit:prefetch
-						href="{base}/complex"
+						href="/complex"
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Complex Example</a
 					>
@@ -108,7 +106,7 @@
 				<li class="mb-1">
 					<a
 						sveltekit:prefetch
-						href="{base}/theme_editor"
+						href="/theme_editor"
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>CSS Theme Editor</a
 					>

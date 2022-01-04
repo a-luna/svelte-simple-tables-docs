@@ -29,7 +29,7 @@
 
 <ul class="toc">
 	<li><a href="#features">Features</a></li>
-	<li><a href="#interactive-examples">Interactive Examples</a></li>
+	<li><a href="#examples">Examples</a></li>
 	<li><a href="#installation">Installation</a></li>
 	<li>
 		<a href="#usage">Usage</a>
@@ -47,7 +47,7 @@
 	</li>
 </ul>
   
-<h2>Features</h2>
+<h2 id="examples">Features</h2>
 
 - **Create sortable, paginated tables** that
 follow [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/examples/table/table.html)
@@ -57,7 +57,7 @@ from an array of typed objects.
 - **Four color themes provided**. Users can adjust every detail of existing themes or create new themes with CSS custom properties.
 
 <div class="flex-header flex flex-row">
-	<span class="emoji">🥳</span><h2 id="interactive-examples">Interactive Examples</h2>
+	<span class="emoji">🥳</span><h2 id="examples">Examples</h2>
 </div>
 
 <ul class="examples">
@@ -66,7 +66,7 @@ from an array of typed objects.
 	<li><span class="coming-soon">Coming Soon: CSS Theme Editor</span></li>
 </ul>
 
-## Installation
+<h2 id="installation">Installation</h2>
 
 **yarn**
 <Highlight language={shell} code={'yarn add -D @a-luna/svelte-simple-tables'} />
@@ -77,7 +77,7 @@ from an array of typed objects.
 **pnpm**
 <Highlight language={shell} code={'pnpm install -D @a-luna/svelte-simple-tables'} />
 
-## Usage
+<h2 id="usage">Usage</h2>
 
 <HighlightSvelte code={getTableSettings()} />
 
@@ -100,11 +100,13 @@ from an array of typed objects.
 	and autocompletion in your IDE.
 </blockquote>
 
+<h3 id="data"><code>data</code></h3>
+
 The `data` for your table will typically be provided from a response to an API request or database query. In this example, `data` is imported from a typescript file (`data.ts`) that exports a list of `VaxData` objects:
 
 <Highlight language={typescript} code={getDataExample()} />
 
-### `columnSettings`
+<h3 id="columnSettings"><code>columnSettings</code></h3>
 
 After you have the `data` that you wish to display in a table, the next step is to determine which `VaxData` properties (`name`, `age`, etc.) should be displayed in each column. This is accomplished with the `columnSettings` prop, which is a list of `ColumnSettings&lt;T&gt;` objects. The API for `ColumnSettings&lt;T&gt;` is given below:
 
@@ -165,7 +167,7 @@ This column also takes advantage of the `classList` property. In Tailwind CSS, `
 	easier to maintain (IMO).
 </blockquote>
 
-### `tableSettings`
+<h3 id="tableSettings"><code>tableSettings</code></h3>
 
 Strictly speaking, the final prop, `tableSettings`, isn't required. Without it, our table would be rendered like this:
 
@@ -206,9 +208,9 @@ Now that's a table that you can be proud of! The `tableSettings` object specifie
 
 ![Image that shows where and how various table settings change the appearance of the rendered table](./readme_settings_explained.png) 
 
-## Themes
+<h2 id="themes">Themes</h2>
 
-### CSS Custom Properties
+<h3 id="css-custom-properties">CSS Custom Properties</h3>
 
 The following CSS custom properties can be applied either at the `body` element (if you want all tables throughout your site to use a single, uniform theme) or can be applied individually to each table. Detailed instructions and an interactive theme editor is a WIP, will be available ASAP: 
 
@@ -228,7 +230,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	a,
 	a:visited {
     color: var(--white1);
-    box-shadow: inset 0 -1.5px 0 var(--blue-green2);
+    box-shadow: inset 0 -3.5px 0 var(--blue-green2);
     text-decoration: none;
 	}
 
@@ -323,7 +325,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	  color: var(--light-gray4);
 	  margin: 2rem 0;
 	  padding: 0.5rem;
-	  border-left: 0.5em var(--blue-green2) solid;
+	  border-left: 0.25em var(--blue-green2) solid;
 		background-color: var(--black2);
 	}
 	
@@ -535,6 +537,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	
 	.examples {
 		font-size: 1.3rem;
+		line-height: 1.5;
 	}
 	
 	.coming-soon {
