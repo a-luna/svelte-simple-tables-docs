@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import ChangeSettingsButton from '$lib/components/Buttons/ChangeSettingsButton.svelte';
 	import ViewCodeButton from '$lib/components/Buttons/ViewCodeButton.svelte';
 	import CodeViewerModal from '$lib/components/Modals/CodeViewerModal.svelte';
@@ -7,6 +8,7 @@
 
 	type T = $$Generic;
 
+	export let title: string;
 	export let columnSettings: ColumnSettings<T>[];
 	export let tableState: TableState;
 	export let code: string;
@@ -22,6 +24,7 @@
 	}
 </script>
 
+<Breadcrumbs {title} />
 <div class="flex flex-row flex-nowrap justify-start gap-3 mb-5">
 	<ChangeSettingsButton
 		tooltip={'Change Table Settings'}

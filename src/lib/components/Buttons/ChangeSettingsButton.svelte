@@ -6,6 +6,6 @@
 	export let tooltip: string = '';
 </script>
 
-<RoundButton on:click size={'md'} color={'yellow'} {tooltip} bind:selected>
+<RoundButton on:click size={'md'} color={'indigo'} {tooltip} bind:selected>
 	<GoSettings />
 </RoundButton>

@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	let hidden: boolean = true;
 </script>
 
-<nav class="relative px-4 flex justify-between items-center shadow h-12">
+<nav id="nav" class="relative px-4 flex justify-between items-center shadow h-12">
 	<div class="lg:hidden">
 		<button class="navbar-burger flex items-center p-3" on:click={() => (hidden = false)}>
 			<svg
@@ -22,6 +24,7 @@
 			<a
 				sveltekit:prefetch
 				href="/"
+				class:active={$page.url.pathname === '/'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Home</a
 			>
@@ -30,6 +33,7 @@
 			<a
 				sveltekit:prefetch
 				href="/basic"
+				class:active={$page.url.pathname === '/basic'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Basic Example</a
 			>
@@ -38,6 +42,7 @@
 			<a
 				sveltekit:prefetch
 				href="/complex"
+				class:active={$page.url.pathname === '/complex'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Complex Example</a
 			>
@@ -46,6 +51,7 @@
 			<a
 				sveltekit:prefetch
 				href="/theme_editor"
+				class:active={$page.url.pathname === '/theme_editor'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>CSS Theme Editor</a
 			>
@@ -83,6 +89,7 @@
 					<a
 						sveltekit:prefetch
 						href="/"
+						class:active={$page.url.pathname === '/'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Home</a
 					>
@@ -91,6 +98,7 @@
 					<a
 						sveltekit:prefetch
 						href="/basic"
+						class:active={$page.url.pathname === '/basic'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Basic Example</a
 					>
@@ -99,6 +107,7 @@
 					<a
 						sveltekit:prefetch
 						href="/complex"
+						class:active={$page.url.pathname === '/complex'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Complex Example</a
 					>
@@ -107,6 +116,7 @@
 					<a
 						sveltekit:prefetch
 						href="/theme_editor"
+						class:active={$page.url.pathname === '/theme_editor'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>CSS Theme Editor</a
 					>
@@ -123,5 +133,14 @@
 
 	a {
 		white-space: nowrap;
+	}
+
+	.btn-ghost.active {
+		color: var(--blue-green2);
+	}
+
+	.btn-ghost:hover,
+	.btn-ghost:active {
+		background-color: var(--black4);
 	}
 </style>

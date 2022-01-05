@@ -123,6 +123,11 @@ body {
 	--fg-color-on-indigo: var(--black4);
 }
 
+html,
+body {
+	background-color: var(--black1);
+}
+
 #settings-form {
 	width: 350px;
 }
@@ -132,6 +137,10 @@ body {
 	width: 175px;
 	background-color: hsl(228, 14.3%, 93.1%);
 	color: hsl(219, 14.1%, 27.8%);
+}
+
+#settings-form .btn-group {
+	flex-flow: row nowrap;
 }
 
 .label {
@@ -164,6 +173,26 @@ body {
 .checkbox-wrapper,
 .radio-wrapper {
 	height: 38px;
+}
+
+table {
+	border-radius: 4px;
+}
+
+th:first-child {
+	border-top-left-radius: 4px;
+}
+
+th:last-child {
+	border-top-right-radius: 4px;
+}
+
+tr:last-child td:first-child {
+	border-bottom-left-radius: 4px;
+}
+
+tr:last-child td:last-child {
+	border-bottom-right-radius: 4px;
 }
 
 @media screen and (min-width: 768px) {

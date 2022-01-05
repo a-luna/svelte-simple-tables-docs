@@ -50,8 +50,7 @@
 <h2 id="examples">Features</h2>
 
 - **Create sortable, paginated tables** that
-follow [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/examples/table/table.html)
-from an array of typed objects.
+follow [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/examples/table/table.html).
 - **Columns dynamically resize** to accommodate all visible content.
 - **Automatically responsive.** Tables become horizontally scrollable without breaking page layout.
 - **Four color themes provided**. Users can adjust every detail of existing themes or create new themes with CSS custom properties.
@@ -61,8 +60,8 @@ from an array of typed objects.
 </div>
 
 <ul class="examples">
-	<li><a sveltekit:prefetch href="/svelte-simple-tables/basic">Example 1: Simple Data Set</a></li>
-	<li><a sveltekit:prefetch href="/svelte-simple-tables/complex">Example 2: Larger, Complex Data Set</a></li>
+	<li><a sveltekit:prefetch href="/basic">Example 1: Simple Data Set</a></li>
+	<li><a sveltekit:prefetch href="/complex">Example 2: Larger, Complex Data Set</a></li>
 	<li><span class="coming-soon">Coming Soon: CSS Theme Editor</span></li>
 </ul>
 
@@ -515,6 +514,7 @@ The following CSS custom properties can be applied either at the `body` element 
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: flex-start;
+    box-shadoww: none;
 	}
   
   .badges > img,
@@ -524,8 +524,9 @@ The following CSS custom properties can be applied either at the `body` element 
     width: auto;
     display: inline-block;
     margin: 0.25rem;
-		padding: none;
+		padding: 0;
 		background-color: transparent;
+    box-shadoww: none;
   }
 	
 	.flex-header {
@@ -537,7 +538,7 @@ The following CSS custom properties can be applied either at the `body` element 
 	}
 	
 	.flex-header .emoji {
-		margin: auto 0.5rem auto 0;
+		margin: auto 1rem auto 0;
 	}
 	
 	.examples {
