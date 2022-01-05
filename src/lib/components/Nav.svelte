@@ -24,7 +24,7 @@
 			<a
 				sveltekit:prefetch
 				href="/"
-				class:active={$page.url.pathname === '/'}
+				class:active={$page?.url?.pathname === '/'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Home</a
 			>
@@ -33,7 +33,7 @@
 			<a
 				sveltekit:prefetch
 				href="/basic"
-				class:active={$page.url.pathname === '/basic'}
+				class:active={$page?.url?.pathname === '/basic'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Basic Example</a
 			>
@@ -42,7 +42,7 @@
 			<a
 				sveltekit:prefetch
 				href="/complex"
-				class:active={$page.url.pathname === '/complex'}
+				class:active={$page?.url?.pathname === '/complex'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>Complex Example</a
 			>
@@ -51,7 +51,7 @@
 			<a
 				sveltekit:prefetch
 				href="/theme_editor"
-				class:active={$page.url.pathname === '/theme_editor'}
+				class:active={$page?.url?.pathname === '/theme_editor'}
 				class="btn btn-ghost btn-sm rounded-btn"
 				on:click={() => (hidden = true)}>CSS Theme Editor</a
 			>
@@ -89,7 +89,7 @@
 					<a
 						sveltekit:prefetch
 						href="/"
-						class:active={$page.url.pathname === '/'}
+						class:active={$page?.url?.pathname === '/'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Home</a
 					>
@@ -98,7 +98,7 @@
 					<a
 						sveltekit:prefetch
 						href="/basic"
-						class:active={$page.url.pathname === '/basic'}
+						class:active={$page?.url?.pathname === '/basic'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Basic Example</a
 					>
@@ -107,7 +107,7 @@
 					<a
 						sveltekit:prefetch
 						href="/complex"
-						class:active={$page.url.pathname === '/complex'}
+						class:active={$page?.url?.pathname === '/complex'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>Complex Example</a
 					>
@@ -116,7 +116,7 @@
 					<a
 						sveltekit:prefetch
 						href="/theme_editor"
-						class:active={$page.url.pathname === '/theme_editor'}
+						class:active={$page?.url?.pathname === '/theme_editor'}
 						class="btn btn-ghost btn-sm rounded-btn"
 						on:click={() => (hidden = true)}>CSS Theme Editor</a
 					>
