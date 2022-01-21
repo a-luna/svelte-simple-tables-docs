@@ -329,8 +329,8 @@ The following CSS custom properties can be applied either at the `body` element 
 
 	code {
 	  color: var(--blue-green2);
-		background-color: var(--dark-gray4)
-;		font-weight: 300;
+		background-color: var(--dark-gray4);
+    font-weight: 300;
 	  font-family: monospace, monospace;
 	  _font-family: 'courier new', monospace;
 	  font-size: 0.85em;
