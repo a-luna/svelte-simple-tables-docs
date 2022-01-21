@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { active } from '$lib/stores/activeContent';
+	import { codeExample } from '$lib/stores/activeContent';
 	import Highlight, { HighlightSvelte } from 'svelte-highlight';
 	import typescript from 'svelte-highlight/src/languages/typescript';
 	import irBlack from 'svelte-highlight/src/styles/ir-black';
@@ -12,7 +12,7 @@
 </svelte:head>
 
 <div class="code-viewer overflow-auto">
-	{#if $active === 'svelte-component'}
+	{#if $codeExample === 'table-component'}
 		<HighlightSvelte {code} />
 	{:else}
 		<Highlight language={typescript} {code} />

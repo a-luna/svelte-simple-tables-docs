@@ -19,6 +19,6 @@
 	onDestroy(() => clearTimeout(timeout));
 </script>
 
-<RoundButton isStateful={true} on:click size={'sm'} color={'teal'} {tooltip} {selected}>
+<RoundButton isStateful={true} on:click size={'md'} color={'teal'} {tooltip} bind:selected>
 	<FaCopy />
 </RoundButton>

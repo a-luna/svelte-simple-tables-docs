@@ -14,9 +14,9 @@
 </script>
 
 <ModalContainer bind:this={modalContainer} bind:hidden={show}>
-	<div slot="heading" class="heading p-2 w-full font-medium">Code Viewer</div>
+	<div slot="heading" class="heading p-2 w-full">Code Viewer</div>
 	<div slot="content" class="outer-content">
-		<div class="flex flex-row flex-nowrap justify-start gap-3 mb-2 w-full">
+		<div class="flex flex-row flex-nowrap justify-start items-center gap-3 my-3 w-full">
 			<ContentSelectorDropDown />
 			<CopyButton tooltip={'Copy Code to Clipboard'} on:click={() => dispatch('copyCode')} />
 		</div>
@@ -24,7 +24,7 @@
 			<CodeViewer {code} />
 		</div>
 	</div>
-	<div slot="buttons" class="buttons flex flex-row flex-nowrap justify-end gap-5 w-full">
+	<div slot="buttons" class="buttons flex flex-row flex-nowrap justify-end gap-5 p-3 w-full">
 		<button
 			class="btn-primary px-2 py-1 overflow-hidden text-base font-medium tracking-wide rounded shadow-md whitespace-nowrap focus:outline-none;
     transition: background 0.2s;"
@@ -40,10 +40,7 @@
 	}
 
 	.outer-content {
-		padding-right: 0.75rem;
-		padding-left: 0.75rem;
-		padding-bottom: 0.25rem;
-		padding-top: 0.25rem;
+		padding: 0 0.75rem;
 	}
 
 	.content {
@@ -56,13 +53,6 @@
 	:global(.modal-content code.hljs) {
 		font-size: 0.65rem;
 		line-height: 1.6;
-	}
-
-	.buttons {
-		padding-right: 0.75rem;
-		padding-left: 0.75rem;
-		padding-bottom: 0.5rem;
-		padding-top: 0.5rem;
 	}
 
 	.btn-primary {
