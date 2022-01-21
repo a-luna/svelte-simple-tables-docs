@@ -11,9 +11,9 @@
 	const bgColorCssPropName = `--bg-color-${color}`;
 	const fgColorCssPropName = `--fg-color-on-${color}`;
 
-	$: buttonSize = size === 'sm' ? 36 : size === 'md' ? 48 : 72;
-	$: iconSize = size === 'sm' ? 16 : size === 'md' ? 24 : 36;
-	$: padding = size === 'sm' ? 10 : size === 'md' ? 12 : 18;
+	$: buttonSize = size === 'sm' ? 30 : size === 'md' ? 48 : 72;
+	$: iconSize = size === 'sm' ? 13 : size === 'md' ? 24 : 36;
+	$: padding = size === 'sm' ? 8 : size === 'md' ? 12 : 18;
 	$: padAdjust = size === 'sm' ? 0 : size === 'md' ? 2 : 0;
 	$: if (typeof window !== 'undefined')
 		bgHslColor = HslColor.fromString(getCSSPropValue(document.body, bgColorCssPropName));
@@ -32,6 +32,8 @@
 </script>
 
 <button
+	on:mouseenter
+	on:mouseleave
 	on:click
 	on:click={() => handleClick()}
 	class:active={selected}
