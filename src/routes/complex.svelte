@@ -16,6 +16,8 @@
 		sortDir: 'desc',
 		tableWrapper: true,
 		themeName: 'light',
+		clickableRows: false,
+		animateSorting: false,
 		paginated: false,
 		pageSize: 10,
 		pageSizeOptions: [5, 10, 15, 20, 25],
@@ -23,7 +25,6 @@
 		pageNavFormat: 'auto',
 		rowType: 'barrels'
 	};
-
 	let tableState = createTableStateStore(pfxData.length, pfxTableSettings);
 
 	$: $dataSet = 'pfx';

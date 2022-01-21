@@ -24,6 +24,8 @@ const getTableSettingsCodeWithPagination = (settings: TableSettings, dataSet: Da
 \t\tsortDir: '${settings.sortDir}',
 \t\ttableWrapper: ${settings.tableWrapper},
 \t\tthemeName: '${settings.themeName}',
+\t\tclickableRows: '${settings.clickableRows}',
+\t\tanimateSorting: '${settings.animateSorting}',
 \t\tpaginated: ${settings.paginated},
 \t\tpageSize: ${settings.pageSize},
 \t\tpageSizeOptions: [${settings.pageSizeOptions}],                                                                                                                                                                                                                                                                                                                             
@@ -54,6 +56,8 @@ const getTableSettingsCodeNoPagination = (settings: TableSettings, dataSet: Data
 \t\tsortType: '${settings.sortType}',
 \t\tsortDir: '${settings.sortDir}',
 \t\ttableWrapper: ${settings.tableWrapper},
+\t\tclickableRows: '${settings.clickableRows}',
+\t\tanimateSorting: '${settings.animateSorting}', 
 \t\tthemeName: '${settings.themeName}',
 \t\tpaginated: ${settings.paginated}
 \t};

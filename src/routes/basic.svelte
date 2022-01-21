@@ -14,6 +14,8 @@
 		sortBy: 'age',
 		sortDir: 'desc',
 		tableWrapper: true,
+		clickableRows: false,
+		animateSorting: true,
 		paginated: true,
 		pageRangeFormat: 'compact',
 		pageNavFormat: 'compact',
@@ -22,7 +24,6 @@
 		themeName: 'darker',
 		rowType: 'vax records'
 	};
-
 	let tableState = createTableStateStore(vaxData.length, vaxTableSettings);
 
 	$: $dataSet = 'vax';
