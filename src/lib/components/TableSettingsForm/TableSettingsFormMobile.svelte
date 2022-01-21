@@ -15,6 +15,8 @@
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
 	import { quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import AnimateSortingCheckbox from './Checkboxes/AnimateSortingCheckbox.svelte';
+	import ClickableRowsCheckbox from './Checkboxes/ClickableRowsCheckbox.svelte';
 
 	type T = $$Generic;
 
@@ -44,9 +46,11 @@
 		<ThemeSelector bind:tableState />
 		<TableHeaderTextField bind:tableState />
 		<ShowHeaderCheckbox bind:tableState />
+		<ShowSortDescriptionCheckbox bind:tableState />
 		<SortByColumnSelector bind:tableState {columnSettings} />
 		<SortDirectionSelector bind:tableState />
-		<ShowSortDescriptionCheckbox bind:tableState />
+		<AnimateSortingCheckbox bind:tableState />
+		<ClickableRowsCheckbox bind:tableState />
 		<FullWidthCheckbox bind:tableState />
 		<TableWrapperCheckbox bind:tableState />
 		<PaginatedCheckbox bind:tableState />

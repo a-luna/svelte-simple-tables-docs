@@ -14,6 +14,8 @@
 	import TableHeaderTextField from '$lib/components/TableSettingsForm/TextFields/TableHeaderTextField.svelte';
 	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
+	import AnimateSortingCheckbox from './Checkboxes/AnimateSortingCheckbox.svelte';
+	import ClickableRowsCheckbox from './Checkboxes/ClickableRowsCheckbox.svelte';
 
 	type T = $$Generic;
 
@@ -22,12 +24,13 @@
 </script>
 
 {#if $pageWidth.current < 1024}
-	<div id="settings-form" class="grid grid-cols-2 gap-2 p-5">
+	<div id="settings-form" class="flex flex-row flex-nowrap justify-start gap-4 p-5">
 		<div class="left-col flex flex-col flex-nowrap gap-2">
 			<ThemeSelector bind:tableState />
-			<SortByColumnSelector bind:tableState {columnSettings} />
-			<SortDirectionSelector bind:tableState />
+			<TableHeaderTextField bind:tableState />
+			<ShowHeaderCheckbox bind:tableState />
 			<ShowSortDescriptionCheckbox bind:tableState />
+			<FullWidthCheckbox bind:tableState />
 			<PaginatedCheckbox bind:tableState />
 			{#if $tableState.paginated}
 				<PageNavFormatSelector bind:tableState />
@@ -35,10 +38,12 @@
 			{/if}
 		</div>
 		<div class="right-col flex flex-col flex-nowrap gap-2">
-			<TableHeaderTextField bind:tableState />
-			<ShowHeaderCheckbox bind:tableState />
-			<FullWidthCheckbox bind:tableState />
+			<SortByColumnSelector bind:tableState {columnSettings} />
+			<SortDirectionSelector bind:tableState />
+			<AnimateSortingCheckbox bind:tableState />
+			<ClickableRowsCheckbox bind:tableState />
 			<TableWrapperCheckbox bind:tableState />
+			<div style="height: 38px" />
 			{#if $tableState.paginated}
 				<PageSizeSelector bind:tableState />
 				<RowTypeTextField bind:tableState />
@@ -46,29 +51,32 @@
 		</div>
 	</div>
 {:else}
-	<div id="settings-form" class="grid grid-cols-3 gap-2 p-5">
+	<div id="settings-form" class="grid grid-cols-3 gap-3 p-5">
 		<div class="left-col flex flex-col flex-nowrap gap-2">
 			<ThemeSelector bind:tableState />
+			<TableHeaderTextField bind:tableState />
 			<SortByColumnSelector bind:tableState {columnSettings} />
-			<FullWidthCheckbox bind:tableState />
+			<ClickableRowsCheckbox bind:tableState />
 			<PaginatedCheckbox bind:tableState />
 			{#if $tableState.paginated}
 				<RowTypeTextField bind:tableState />
 			{/if}
 		</div>
 		<div class="middle-col flex flex-col flex-nowrap gap-2">
-			<TableHeaderTextField bind:tableState />
+			<div style="height: 38px" />
+			<ShowHeaderCheckbox bind:tableState />
 			<SortDirectionSelector bind:tableState />
-			<TableWrapperCheckbox bind:tableState />
+			<FullWidthCheckbox bind:tableState />
 			{#if $tableState.paginated}
 				<PageSizeSelector bind:tableState />
 				<PageRangeFormatSelector bind:tableState />
 			{/if}
 		</div>
 		<div class="right-col flex flex-col flex-nowrap gap-2">
-			<ShowHeaderCheckbox bind:tableState />
-			<ShowSortDescriptionCheckbox bind:tableState />
 			<div style="height: 38px" />
+			<ShowSortDescriptionCheckbox bind:tableState />
+			<AnimateSortingCheckbox bind:tableState />
+			<TableWrapperCheckbox bind:tableState />
 			{#if $tableState.paginated}
 				<PageNavFormatSelector bind:tableState />
 			{/if}
