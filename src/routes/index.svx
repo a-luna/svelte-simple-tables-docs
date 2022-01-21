@@ -6,11 +6,18 @@
 		getTableSettings,
     themeCSSVariables
 	} from '$lib/codeExamples/readme';
+  import { active } from '$lib/stores/activeContent';
+  import { onMount, tick } from 'svelte';
 	import Highlight, { HighlightSvelte } from 'svelte-highlight';
 	import css from 'svelte-highlight/src/languages/css';
 	import shell from 'svelte-highlight/src/languages/shell';
 	import typescript from 'svelte-highlight/src/languages/typescript';
 	import irBlack from 'svelte-highlight/src/styles/ir-black';
+  
+  onMount(async () => {
+    await tick();
+    $active = 'docs';
+  })
 </script>
 
 <svelte:head>
@@ -93,7 +100,7 @@ follow [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/exampl
 		class="emoji"
 		title="kindly stuff your gripes of 'types are overhyped' inside a pipe. wipe your tear-stripes, their time is ripe"
 		>😨</span
-	> <strong>BUT I DON'T WANT TO USE 'TYPES'</strong> Why is it necessary to specify the type of the items
+	><strong>BUT I DON'T WANT TO USE 'TYPES'</strong> Why is it necessary to specify the type of the items
 	in the <code>data</code> array? <code>SimpleTable</code> uses <a href="https://github.com/dummdidumm/rfcs/blob/ts-typedefs-within-svelte-components/text/ts-typing-props-slots-events.md">an experimental svelte feature</a>
 	that makes it possible to use generic types with component props. This enables advanced error-checking
 	and autocompletion in your IDE.
@@ -120,7 +127,7 @@ After you have the `data` that you wish to display in a table, the next step is 
 | `colValue`   | `(obj: T) => string` | ❌        | (obj: T) => obj[propName] (i.e, The value of the object property `propName`)                                                                                                                                             | A function that accepts an object from `data` and returns the value that should be displayed in this column. This allows you to customize the way the data is displayed in any way.                                                                |
 
 <blockquote>
-	<span class="emoji" title="what manner of buffoonery is this?">🤔</span> <strong>YOU MAY BE WONDERING</strong> Why
+	<span class="emoji" title="what manner of buffoonery is this?">🤔</span><strong>YOU MAY BE WONDERING</strong> Why
 	is it neessary to specify the <code>propType</code> for each column? This is required in order to make the table
 	sortable. Since numeric, text and date values cannot be sorted using a single algorithm, <code>propType</code>
 	is used to determine the sort function appropriate for each data type.
@@ -160,7 +167,7 @@ This column also takes advantage of the `classList` property. In Tailwind CSS, `
 
 <blockquote>
 	<span class="emoji" title="average temp of finnish sauna: 80&deg;C (176&deg;F)">♨️</span>
-	<strong>HOT TIP</strong> You can define <code>columnSettings</code> in the <code>&lt;script&gt;</code> tag of your <code>.svelte</code>
+<strong>HOT TIP</strong> You can define <code>columnSettings</code> in the <code>&lt;script&gt;</code> tag of your <code>.svelte</code>
 	file, or in a separate <code>.ts</code> file as demonstrated here. If your table has a large number of columns,
 	moving it to its own file will make your <code>.svelte</code> file easier to digest visually and make your component
 	easier to maintain (IMO).
@@ -178,26 +185,32 @@ That's a very nice table, I'm sure you will agree. However, by customizing the `
 
 Now that's a table that you can be proud of! The `tableSettings` object specified at the beginning of this README will produce these changes. The `TableSettings` interface exposes the following configuration settings:
 
-| Property              | Type               | Required | Default                                        | Description                                                                                                                                                                            |
-| --------------------- | ------------------ | -------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tableId`             | `string`           | ❌        | Randomly generated ID (e.g., `table-79f3e496`) | This is the `id` attribute of the table HTML element                                                                                                                                   |
-| `showHeader`          | `boolean`          | ❌        | `false`                                        | Display the  `header`value above the table (__#1 in the disgram below__)                                                                                                               |
-| `header`              | `string`           | ❌        | `''` (empty string)                            | Table header/caption/title to display above the table                                                                                                                                  |
-| `showSortDescription` | `boolean`          | ❌        | `false`                                        | Display the sort column and sort direction currently applied (__#2 in the diagram below__)                                                                                             |
-| `fullWidth`           | `boolean`          | ❌        | `false`                                        | Display table as block element with 100% width                                                                                                                                         |
-| `sortBy`              | `string`           | ❌        | `null`                                         | `propName` of the column to sort the table by. If not specified, no sorting behavior will be applied when component is loaded. (__#3 in the diagram below__)                           |
-| `sortDir`             | `SortDirection`    | ❌        | `'asc'`                                        | `SortDirection` is a string literal type = `asc` or `desc`. Determines if the sort behavior is applied in ascending or descending order.                                               |
-| `tableWrapper`        | `boolean`          | ❌        | `false`                                        | Display a border around the table (__#4 in the diagram below__)                                                                                                                        |
-| `themeName`           | `TableTheme`       | ❌        | `'lighter'`                                    | `themeName`is a string literal type = `'light'` \| `'lighter'` \| `'dark'` \| `'darker'` \| `'custom’`. You can check out all of the themes in the interactive docs.                                                                                 |
-| `paginated`           | `boolean`          | ❌        | `false`                                        | Enables pagination. If `false`, all rows are displayed.                                                                                                                                                                                       |
-| `pageSize`            | `number`           | ❌        | `5`                                            | _(If paginated)_ Number of rows to display per page. Must be one of the options in `pageSizeOptions`.                                                                                                                                                                                       |
-| `pageSizeOptions`     | `number[]`         | ❌        | `[5, 10, 15]`                                  | _(If paginated)_ Array of possible page sizes, user can switch between page sizes at any time.                                                                                                                                                                                       |
-| `pageRangeFormat`     | `PageRangeFormat`  | ❌        | `'auto'`                                       | _(If paginated)_ `PageRangeFormat` is a string literal type = `'none'` \| `'compact'` \| `'verbose'` \| `'auto'`. See interactive docs for examples.                                                                                                                                                                                       |
-| `pageNavFormat`       | `PaginationLayout` | ❌        | `'auto'`                                       | _(If paginated)_ `PaginationLayout` is a string literal type = `'compact'` \| `'full'` \| `'auto'`. See interactive docs for examples.                                                                                                                                                                                        |
-| `rowType`             | `string`           | ❌        | `'rows'`                                       | _(If paginated)_ Since the page range description in verbose mode displays as 'XX-YY of ZZ total _rowType_' you can customize the term used to dsescribe the tabular data (e.g., '1-10 of 21 _patients_' or '6-10 of 21 _vax records_' in our table).                                                                                                                                                                                       |
+| Property              | Type               | Required  | Default                                        | Description                                                                                                                                                                                                                                           |
+| --------------------- | ------------------ | --------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tableId`             | `string`           | ❌        | Randomly generated ID (e.g., `table-79f3e496`) | This is the `id` attribute of the table HTML element                                                                                                                                                                                                  |
+| `showHeader`          | `boolean`          | ❌        | `false`                                        | Display the  `header`value above the table (__#1 in the disgram below__)                                                                                                                                                                              |
+| `header`              | `string`           | ❌        | `''` (empty string)                            | Table header/caption/title to display above the table                                                                                                                                                                                                 |
+| `showSortDescription` | `boolean`          | ❌        | `false`                                        | Display the sort column and sort direction currently applied (__#2 in the diagram below__)                                                                                                                                                            |
+| `fullWidth`           | `boolean`          | ❌        | `false`                                        | Display table as block element with 100% width                                                                                                                                                                                                        |
+| `sortBy`              | `string`           | ❌        | `null`                                         | `propName` of the column to sort the table by. If not specified, no sorting behavior will be applied when component is loaded. (__#3 in the diagram below__)                                                                                          |
+| `sortDir`             | `SortDirection`    | ❌        | `'asc'`                                        | `SortDirection` is a string literal type = `asc` or `desc`. Determines if the sort behavior is applied in ascending or descending order.                                                                                                              |
+| `tableWrapper`        | `boolean`          | ❌        | `false`                                        | Display a border around the table (__#4 in the diagram below__)                                                                                                                                                                                       |
+| `themeName`           | `TableTheme`       | ❌        | `'lighter'`                                    | `themeName`is a string literal type = `'light'` \| `'lighter'` \| `'dark'` \| `'darker'` \| `'custom’`. You can check out all of the themes in the interactive docs.                                                                                  |
+| `clickableRows` 🎁    | `boolean`          | ❌        | `false`                                        | The `rowClicked` event is raised when any row in the body of the table is clicked. The event contains the row data as an object of type `T`.                                                                                                          |
+| `animateSorting` 🎁   | `boolean`          | ❌        | `false`                                        | Changes in row order are reflected as a flip animation when the sort behavior is changed (e.g., by clicking on a column header)                                                                                                                       |
+| `paginated`           | `boolean`          | ❌        | `false`                                        | Enables pagination. If `false`, all rows are displayed.                                                                                                                                                                                               |
+| `pageSize`            | `number`           | ❌        | `5`                                            | _(If paginated)_ Number of rows to display per page. Must be one of the options in `pageSizeOptions`.                                                                                                                                                 |
+| `pageSizeOptions`     | `number[]`         | ❌        | `[5, 10, 15]`                                  | _(If paginated)_ Array of possible page sizes, user can switch between page sizes at any time.                                                                                                                                                        |
+| `pageRangeFormat`     | `PageRangeFormat`  | ❌        | `'auto'`                                       | _(If paginated)_ `PageRangeFormat` is a string literal type = `'none'` \| `'compact'` \| `'verbose'` \| `'auto'`. See interactive docs for examples.                                                                                                  |
+| `pageNavFormat`       | `PaginationLayout` | ❌        | `'auto'`                                       | _(If paginated)_ `PaginationLayout` is a string literal type = `'compact'` \| `'full'` \| `'auto'`. See interactive docs for examples.                                                                                                                |
+| `rowType`             | `string`           | ❌        | `'rows'`                                       | _(If paginated)_ Since the page range description in verbose mode displays as 'XX-YY of ZZ total _rowType_' you can customize the term used to dsescribe the tabular data (e.g., '1-10 of 21 _patients_' or '6-10 of 21 _vax records_' in our table). |
 
 <blockquote>
-	<span class="emoji" title="stop calling me 'chief'">😲</span> <strong>LISTEN UP, CHIEF:</strong> As explained
+  <span class="emoji" title="version 0.0.16 features">🎁</span><span class="released-in-version">Released in 0.0.16</span>
+</blockquote>
+
+<blockquote>
+	<span class="emoji" title="stop calling me 'chief'">😲</span><strong>LISTEN UP, CHIEF:</strong> As explained
 	above, the <code>tableId</code> prop is used as the <code>id</code> attribute of the table HTML
 	element. Therefore, it is very important that you treat this value as a unique identifier, per
 	HTML requirements. If you choose to provide your own value for <code>tableId</code> , it is
@@ -216,11 +229,7 @@ The following CSS custom properties can be applied either at the `body` element 
 <Highlight language={css} code={themeCSSVariables()} />
 
 <style lang="postcss">
-	:root {
-		background-color: var(--black1);
-	}
-
-	:global(body) {
+  :global(body) {
 		background-color: var(--black1);
 	  color: var(--white1);
 	  line-height: 1.5em;
@@ -328,12 +337,14 @@ The following CSS custom properties can be applied either at the `body` element 
 		background-color: var(--black2);
 	}
 	
-	blockquote :global(.emoji) {
-		margin: 0 0.5rem 0 0;
-	}
+  .released-in-version {
+    font-style: italic;
+    color: var(--light-gray4);
+  }
 	
-	blockquote strong {
-		margin: 0 0.5rem 0 0;
+	blockquote strong,
+  blockquote span {
+		margin: 0 0.35rem;
 		color: var(--white4);
 	}
 
