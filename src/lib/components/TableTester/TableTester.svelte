@@ -12,8 +12,8 @@
 	export let columnSettings: ColumnSettings<T>[];
 	export let tableState: TableState;
 	export let code: string;
-  
-	$: showCopyButton = $active !== 'settings';
+
+	$: showCopyButton = $active === 'code-viewer';
 </script>
 
 <div class="form-wrapper mx-auto">
@@ -31,6 +31,7 @@
 <style lang="postcss">
 	.form-wrapper {
 		max-width: 1025px;
+		margin-bottom: 0.5rem;
 	}
 	.tab-content {
 		background-color: var(--black4);

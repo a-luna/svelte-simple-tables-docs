@@ -1,13 +1,10 @@
 import { HSL_COLOR_REGEX } from './constants';
 
+export type WithTarget<Event, Target> = Event & { currentTarget: Target };
 export type DataSet = 'vax' | 'pfx';
 export type AlertState = 'none' | 'info' | 'success' | 'warning' | 'error';
-export type CodeViewerContent =
-	| 'settings'
-	| 'svelte-component'
-	| 'column-settings'
-	| 'data'
-	| 'pitchfx';
+export type ActiveContent = 'docs' | 'table-settings' | 'code-viewer' | 'theme-editor';
+export type CodeExample = 'table-component' | 'column-settings' | 'data' | 'pitchfx';
 
 export type ButtonColor =
 	| 'red'

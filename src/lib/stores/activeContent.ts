@@ -1,4 +1,5 @@
-import type { CodeViewerContent } from '$lib/types';
+import type { ActiveContent, CodeExample } from '$lib/types';
 import { writable } from 'svelte/store';
 
-export const active = writable<CodeViewerContent>('settings');
+export const active = writable<ActiveContent>('docs');
+export const codeExample = writable<CodeExample>('table-component');

@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { active } from '$lib/stores/activeContent';
+	import { codeExample } from '$lib/stores/activeContent';
 	import { dataSet } from '$lib/stores/dataSet';
-	import type { CodeViewerContent } from '$lib/types';
+	import type { CodeExample } from '$lib/types';
 	import Svelecte from 'svelecte/src/Svelecte.svelte';
 
-	let value: CodeViewerContent = 'svelte-component';
+	let value: CodeExample = 'table-component';
 
 	$: contentOptions = createSelectMenuItems();
-	$: $active = value;
+	$: $codeExample = value;
 
-	function createSelectMenuItems(): { label: string; value: CodeViewerContent }[] {
-		const menuItems: { label: string; value: CodeViewerContent }[] = [
+	function createSelectMenuItems(): { label: string; value: CodeExample }[] {
+		const menuItems: { label: string; value: CodeExample }[] = [
 			{
 				label: 'App.svelte',
-				value: 'svelte-component'
+				value: 'table-component'
 			},
 			{
 				label: 'columnSettings.ts',
@@ -39,6 +39,3 @@
 	options={contentOptions}
 	style={'flex: 0 0 180px'}
 />
-
-<style lang="postcss">
-</style>

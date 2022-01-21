@@ -1,44 +1,58 @@
 <script lang="ts">
-	import { active } from '$lib/stores/activeContent';
+	import { active, codeExample } from '$lib/stores/activeContent';
 	import { dataSet } from '$lib/stores/dataSet';
+	import type { CodeExample } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-	$: showCopyButton = $active !== 'settings';
+	$: showCopyButton = $active === 'code-viewer';
+	$: svelteComponentCodeSelected = $active === 'code-viewer' && $codeExample === 'table-component';
+	$: columnSettingsCodeSelected = $active === 'code-viewer' && $codeExample === 'column-settings';
+	$: tableDataCodeSelected = $active === 'code-viewer' && $codeExample === 'data';
+	$: pitchFxInterfaceCodeSelected = $active === 'code-viewer' && $codeExample === 'pitchfx';
+
+	function showSettingsForm() {
+		$active = 'table-settings';
+	}
+
+	function showCodeViewer(selectedCode: CodeExample) {
+		$active = 'code-viewer';
+		$codeExample = selectedCode;
+	}
 </script>
 
 <div class:copy-button-shown={showCopyButton} class="flex flex-row flex-nowrap justify-between">
 	<div class="tabs">
 		<span
 			class="content-tab"
-			class:selected-tab={$active === 'settings'}
-			on:click={() => ($active = 'settings')}>Settings</span
+			class:selected-tab={$active === 'table-settings'}
+			on:click={() => showSettingsForm()}>Settings</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={$active === 'svelte-component'}
-			on:click={() => ($active = 'svelte-component')}>App.svelte</span
+			class:selected-tab={svelteComponentCodeSelected}
+			on:click={() => showCodeViewer('table-component')}>App.svelte</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={$active === 'column-settings'}
-			on:click={() => ($active = 'column-settings')}>columnSettings.ts</span
+			class:selected-tab={columnSettingsCodeSelected}
+			on:click={() => showCodeViewer('column-settings')}>columnSettings.ts</span
 		>
 		<span
 			class="content-tab"
-			class:selected-tab={$active === 'data'}
-			on:click={() => ($active = 'data')}>data.ts</span
+			class:selected-tab={tableDataCodeSelected}
+			on:click={() => showCodeViewer('data')}>data.ts</span
 		>
 		{#if $dataSet === 'pfx'}
 			<span
 				class="content-tab"
-				class:selected-tab={$active === 'pitchfx'}
-				on:click={() => ($active = 'pitchfx')}>PitchFx.ts</span
+				class:selected-tab={pitchFxInterfaceCodeSelected}
+				on:click={() => showCodeViewer('pitchfx')}>PitchFx.ts</span
 			>
 		{/if}
 	</div>
-	{#if $active !== 'settings'}
+	{#if showCopyButton}
 		<div
 			class="text-sm btn-accent leading-none mt-auto flex-none copy-button cursor-pointer py-2 px-4"
 			on:click={() => dispatch('copyCode')}

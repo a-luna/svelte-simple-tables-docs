@@ -7,10 +7,10 @@
 	} from '$lib/codeExamples/CodeViewer';
 	import TableTester from '$lib/components/TableTester/TableTester.svelte';
 	import TableTesterMobile from '$lib/components/TableTester/TableTesterMobile.svelte';
-	import { active } from '$lib/stores/activeContent';
+	import { active, codeExample } from '$lib/stores/activeContent';
 	import { alert } from '$lib/stores/alert';
 	import { dataSet } from '$lib/stores/dataSet';
-	import type { CodeViewerContent, DataSet } from '$lib/types';
+	import type { CodeExample, DataSet } from '$lib/types';
 	import SimpleTable from '@a-luna/svelte-simple-tables';
 	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type {
@@ -18,6 +18,7 @@
 		TableSettings,
 		TableState
 	} from '@a-luna/svelte-simple-tables/types';
+	import RowDataViewerModal from './Modals/RowDataViewerModal.svelte';
 
 	type T = $$Generic;
 
@@ -26,22 +27,25 @@
 	export let columnSettings: ColumnSettings<T>[];
 	export let tableSettings: TableSettings;
 	export let tableState: TableState;
+	let rowData: T;
+	let showRowDataModal = false;
 
+	$active = 'table-settings';
 	$tableState.sortType = columnSettings.find((c) => c.propName === $tableState.sortBy).propType;
-	$: code = getCodeExample($active, $tableState, $dataSet);
+	$: code = getCodeExample($codeExample, $tableState, $dataSet);
 
 	export const getCodeExample = (
-		content: CodeViewerContent,
+		code: CodeExample,
 		settings: TableSettings,
 		dataSet: DataSet
 	): string =>
-		content === 'svelte-component'
+		code === 'table-component'
 			? getTableSettingsCode(settings, dataSet)
-			: content === 'column-settings'
+			: code === 'column-settings'
 			? getColumnSettingsCode(dataSet)
-			: content === 'data'
+			: code === 'data'
 			? getDataCode(dataSet)
-			: content === 'pitchfx'
+			: code === 'pitchfx'
 			? getPitchFxTypeCode()
 			: '';
 
@@ -57,18 +61,35 @@
 			}
 		}
 	}
+
+	function handleRowClicked(clickedRowData: T) {
+		rowData = clickedRowData;
+		showRowDataModal = true;
+	}
 </script>
 
 {#if $pageWidth.current < 768}
 	<TableTesterMobile
 		bind:tableState
-    {title}
+		{title}
 		{columnSettings}
 		{code}
 		on:copyCode={() => copyCodeToClipboard()}
 	/>
 {:else}
-	<TableTester bind:tableState {title} {columnSettings} {code} on:copyCode={() => copyCodeToClipboard()} />
+	<TableTester
+		bind:tableState
+		{title}
+		{columnSettings}
+		{code}
+		on:copyCode={() => copyCodeToClipboard()}
+	/>
 {/if}
-<SimpleTable {data} {columnSettings} {tableSettings} bind:tableState />
-
+<SimpleTable
+	{data}
+	{columnSettings}
+	{tableSettings}
+	bind:tableState
+	on:rowClicked={(e) => handleRowClicked(e.detail)}
+/>
+<RowDataViewerModal bind:show={showRowDataModal} {rowData} />
