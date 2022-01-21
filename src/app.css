@@ -134,9 +134,10 @@ body {
 
 #settings-form .input {
 	height: 38px;
-	width: 175px;
+	width: 100%;
 	background-color: hsl(228, 14.3%, 93.1%);
 	color: hsl(219, 14.1%, 27.8%);
+	flex: 1;
 }
 
 #settings-form .btn-group {
@@ -152,6 +153,7 @@ body {
 	font-size: 0.9rem;
 	font-weight: 500;
 	white-space: nowrap;
+	flex: 0 1 auto;
 }
 
 #settings-form .mobile .label-text {
@@ -159,11 +161,11 @@ body {
 }
 
 #settings-form .left-col .label-text {
-	width: 130px;
+	width: 135px;
 }
 
 #settings-form .right-col .label-text {
-	width: 100px;
+	width: 125px;
 }
 
 .checkbox-wrapper {
@@ -202,12 +204,13 @@ tr:last-child td:last-child {
 }
 
 @media screen and (min-width: 768px) {
-	#settings-form {
+	.label-text {
+		font-size: 1rem;
 		width: auto;
 	}
 
-	#settings-form .input {
-		width: 200px;
+	#settings-form {
+		width: auto;
 	}
 }
 
@@ -218,14 +221,14 @@ tr:last-child td:last-child {
 	}
 
 	#settings-form .left-col .label-text {
-		width: 75px;
+		width: 112px;
 	}
 
 	#settings-form .middle-col .label-text {
-		width: 104px;
+		width: 107px;
 	}
 
 	#settings-form .right-col .label-text {
-		width: 130px;
+		width: 132px;
 	}
 }

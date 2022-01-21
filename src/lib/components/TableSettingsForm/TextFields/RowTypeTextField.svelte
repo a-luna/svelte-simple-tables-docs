@@ -8,7 +8,7 @@
 </script>
 
 <label for="row-type" class="label">
-	<div class="flex flex-row items-center gap-3">
+	<div class="flex flex-row items-center w-full gap-3">
 		<span class="label-text">Row Type</span>
 		<input
 			bind:value={$tableState.rowType}
