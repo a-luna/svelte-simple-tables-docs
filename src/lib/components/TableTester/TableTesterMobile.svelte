@@ -15,7 +15,8 @@
 	let showSettingsForm = false;
 	let showCodeViewerModal = false;
 
-	function toggleSettingsForm() {
+	function toggleSettingsForm(event) {
+		event.stopPropagation();
 		showCodeViewerModal = false;
 	}
 
@@ -29,7 +30,7 @@
 	<ChangeSettingsButton
 		tooltip={'Change Table Settings'}
 		bind:selected={showSettingsForm}
-		on:click={() => toggleSettingsForm()}
+		on:click={(e) => toggleSettingsForm(e)}
 	/>
 	<ViewCodeButton
 		tooltip={'View Code Source'}
@@ -38,6 +39,6 @@
 	/>
 </div>
 {#if showSettingsForm}
-	<TableSettingsFormMobile {columnSettings} bind:tableState />
+	<TableSettingsFormMobile {columnSettings} bind:tableState bind:showSettingsForm />
 {/if}
 <CodeViewerModal bind:show={showCodeViewerModal} {code} on:copyCode />

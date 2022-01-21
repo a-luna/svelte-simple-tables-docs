@@ -20,10 +20,26 @@
 
 	export let tableState: TableState;
 	export let columnSettings: ColumnSettings<T>[];
+	export let showSettingsForm = false;
+	let settingsFormElement: HTMLElement;
 	const flyOptions = { duration: 750, easing: quintOut, x: -200 };
+
+	function checkForOuterClick(event) {
+		if (showSettingsForm && !settingsFormElement.contains(event.target)) {
+			showSettingsForm = false;
+		}
+	}
 </script>
 
-<div transition:fly={flyOptions} id="settings-form" class="tab-content border-solid border-2 mb-4">
+<svelte:window on:click={checkForOuterClick} />
+
+<div
+	transition:fly={flyOptions}
+	bind:this={settingsFormElement}
+	id="settings-form"
+	class="tab-content border-solid border-2 mb-4"
+	on:click|stopPropagation
+>
 	<div class="flex flex-col flex-nowrap gap-2 p-5 mobile">
 		<ThemeSelector bind:tableState />
 		<TableHeaderTextField bind:tableState />
