@@ -31,7 +31,7 @@
 <style lang="postcss">
 	.form-wrapper {
 		max-width: 1025px;
-		margin-bottom: 0.5rem;
+		margin-bottom: 2rem;
 	}
 	.tab-content {
 		background-color: var(--black4);

@@ -28,74 +28,63 @@
 
 <div
 	id="settings-form"
-	style="display: grid; grid-template-columns: repeat({gridColumns}, auto); grid-template-rows: repeat({gridRows}, auto);  gap: 0.75rem;"
+	style="display: grid; grid-template-columns: repeat({gridColumns}, auto); grid-template-rows: repeat({gridRows}, auto);  gap: 0.75rem 1rem;"
 >
 	<ThemeSelector
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 1 : 1}
 		gridCol={$pageWidth.current < 1024 ? 1 : 1}
-		gridColSpan={1}
 	/>
 	<TableHeaderTextField
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 2 : 2}
 		gridCol={$pageWidth.current < 1024 ? 1 : 1}
-		gridColSpan={1}
 	/>
 	<SortByColumnSelector
 		bind:tableState
 		{columnSettings}
 		gridRow={$pageWidth.current < 1024 ? 1 : 3}
 		gridCol={$pageWidth.current < 1024 ? 2 : 1}
-		gridColSpan={1}
 	/>
 	<ClickableRowsCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 4 : 4}
 		gridCol={$pageWidth.current < 1024 ? 2 : 1}
-		gridColSpan={1}
 	/>
 	<ShowHeaderCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 3 : 2}
 		gridCol={$pageWidth.current < 1024 ? 1 : 2}
-		gridColSpan={1}
 	/>
 	<SortDirectionSelector
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 2 : 3}
 		gridCol={$pageWidth.current < 1024 ? 2 : 2}
-		gridColSpan={1}
 	/>
 	<FullWidthCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 5 : 4}
 		gridCol={$pageWidth.current < 1024 ? 1 : 2}
-		gridColSpan={1}
 	/>
 	<ShowSortDescriptionCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 4 : 2}
 		gridCol={$pageWidth.current < 1024 ? 1 : 3}
-		gridColSpan={1}
 	/>
 	<AnimateSortingCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 3 : 3}
 		gridCol={$pageWidth.current < 1024 ? 2 : 3}
-		gridColSpan={1}
 	/>
 	<TableWrapperCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 5 : 4}
 		gridCol={$pageWidth.current < 1024 ? 2 : 3}
-		gridColSpan={1}
 	/>
 	<PaginatedCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 6 : 5}
 		gridCol={$pageWidth.current < 1024 ? 1 : 1}
-		gridColSpan={1}
 	/>
 
 	{#if $tableState.paginated}
@@ -103,25 +92,22 @@
 			bind:tableState
 			gridRow={$pageWidth.current < 1024 ? 8 : 6}
 			gridCol={$pageWidth.current < 1024 ? 2 : 1}
-			gridColSpan={1}
 		/>
 		<PageSizeSelector
 			bind:tableState
 			gridRow={$pageWidth.current < 1024 ? 7 : 5}
 			gridCol={$pageWidth.current < 1024 ? 2 : 2}
-			gridColSpan={1}
 		/>
 		<PageRangeFormatSelector
 			bind:tableState
 			gridRow={$pageWidth.current < 1024 ? 8 : 6}
 			gridCol={$pageWidth.current < 1024 ? 1 : 2}
-			gridColSpan={1}
+			gridColSpan={$pageWidth.current < 1024 ? 1 : 2}
 		/>
 		<PageNavFormatSelector
 			bind:tableState
 			gridRow={$pageWidth.current < 1024 ? 7 : 5}
 			gridCol={$pageWidth.current < 1024 ? 1 : 3}
-			gridColSpan={1}
 		/>
 	{/if}
 </div>
