@@ -4,6 +4,9 @@
 	import Svelecte, { addFormatter } from 'svelecte/src/Svelecte.svelte';
 
 	export let tableState: TableState;
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 	const themes: TableTheme[] = ['light', 'lighter', 'dark', 'darker'];
 	const itemStyles =
 		'display: inline-flex; align-self: center; position: relative; top: 2px; height: 1em; width: 1em; border: 1px solid #000000; margin-right: 0.4em';
@@ -23,7 +26,13 @@
 	addFormatter('theme-items', themeRenderer);
 </script>
 
-<label for="select-theme" class="label">
+<label
+	for="select-theme"
+	class="label"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<div class="flex flex-row items-center gap-3">
 		<span class="label-text">Theme</span>
 		<Svelecte

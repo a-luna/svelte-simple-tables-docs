@@ -1,9 +1,18 @@
 <script lang="ts">
 	import type { TableState } from '@a-luna/svelte-simple-tables/types';
 	export let tableState: TableState;
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 </script>
 
-<label for="page-nav-format" class="label radio-wrapper">
+<label
+	for="page-nav-format"
+	class="label radio-wrapper"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<div class="flex flex-row items-center gap-2">
 		<span class="label-text">Page Nav</span>
 		<div class="btn-group">

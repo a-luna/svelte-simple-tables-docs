@@ -5,6 +5,9 @@
 	import { fade } from 'svelte/transition';
 
 	export let tableState: TableState;
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 	let showMessage = false;
 
 	$: defaultPosition = 'left: 40px; top: 175px;';
@@ -23,7 +26,13 @@
 
 <svelte:window on:click={() => (showMessage = false)} />
 
-<label for="full-width" class="cursor-pointer label checkbox-wrapper">
+<label
+	for="full-width"
+	class="cursor-pointer label checkbox-wrapper"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<span class="label-text">Clickable Rows</span>
 	<input
 		id="full-width"

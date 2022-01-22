@@ -160,11 +160,11 @@ body {
 	flex: 0 0 120px;
 }
 
-#settings-form .left-col .label-text {
+#settings-form [data-col='1'] .label-text {
 	width: 135px;
 }
 
-#settings-form .right-col .label-text {
+#settings-form [data-col='2'] .label-text {
 	width: 125px;
 }
 
@@ -220,15 +220,15 @@ tr:last-child td:last-child {
 		width: auto;
 	}
 
-	#settings-form .left-col .label-text {
+	#settings-form [data-col='1'] .label-text {
 		width: 112px;
 	}
 
-	#settings-form .middle-col .label-text {
+	#settings-form [data-col='2'] .label-text {
 		width: 107px;
 	}
 
-	#settings-form .right-col .label-text {
+	#settings-form [data-col='3'] .label-text {
 		width: 132px;
 	}
 }

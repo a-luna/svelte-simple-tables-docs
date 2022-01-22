@@ -9,6 +9,9 @@
 
 	export let tableState: TableState;
 	export let columnSettings: ColumnSettings<T>[];
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 
 	$: sortByOptions = createSelectMenuItems<T>(columnSettings);
 
@@ -31,7 +34,13 @@
 	}
 </script>
 
-<label for="sort-by" class="label">
+<label
+	for="sort-by"
+	class="label"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<div class="flex flex-row items-center gap-3">
 		<span class="label-text">Sort By</span>
 		<Svelecte

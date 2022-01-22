@@ -4,10 +4,19 @@
 	import Svelecte from 'svelecte/src/Svelecte.svelte';
 
 	export let tableState: TableState;
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 	const pageRangeOptions: PageRangeFormat[] = ['none', 'auto', 'compact', 'verbose'];
 </script>
 
-<label for="page-range-layout" class="label">
+<label
+	for="page-range-layout"
+	class="label"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<div class="flex flex-row items-center gap-3">
 		<span class="label-text">Page Range</span>
 		<Svelecte

@@ -21,65 +21,113 @@
 
 	export let tableState: TableState;
 	export let columnSettings: ColumnSettings<T>[];
+
+	$: gridColumns = $pageWidth.current < 1024 ? 2 : 3;
+	$: gridRows = $pageWidth.current < 1024 ? 8 : 6;
 </script>
 
-{#if $pageWidth.current < 1024}
-	<div id="settings-form" class="flex flex-row flex-nowrap justify-start gap-4 p-5">
-		<div class="left-col flex flex-col flex-nowrap gap-2">
-			<ThemeSelector bind:tableState />
-			<TableHeaderTextField bind:tableState />
-			<ShowHeaderCheckbox bind:tableState />
-			<ShowSortDescriptionCheckbox bind:tableState />
-			<FullWidthCheckbox bind:tableState />
-			<PaginatedCheckbox bind:tableState />
-			{#if $tableState.paginated}
-				<PageNavFormatSelector bind:tableState />
-				<PageRangeFormatSelector bind:tableState />
-			{/if}
-		</div>
-		<div class="right-col flex flex-col flex-nowrap gap-2">
-			<SortByColumnSelector bind:tableState {columnSettings} />
-			<SortDirectionSelector bind:tableState />
-			<AnimateSortingCheckbox bind:tableState />
-			<ClickableRowsCheckbox bind:tableState />
-			<TableWrapperCheckbox bind:tableState />
-			<div style="height: 38px" />
-			{#if $tableState.paginated}
-				<PageSizeSelector bind:tableState />
-				<RowTypeTextField bind:tableState />
-			{/if}
-		</div>
-	</div>
-{:else}
-	<div id="settings-form" class="grid grid-cols-3 gap-3 p-5">
-		<div class="left-col flex flex-col flex-nowrap gap-2">
-			<ThemeSelector bind:tableState />
-			<TableHeaderTextField bind:tableState />
-			<SortByColumnSelector bind:tableState {columnSettings} />
-			<ClickableRowsCheckbox bind:tableState />
-			<PaginatedCheckbox bind:tableState />
-			{#if $tableState.paginated}
-				<RowTypeTextField bind:tableState />
-			{/if}
-		</div>
-		<div class="middle-col flex flex-col flex-nowrap gap-2">
-			<div style="height: 38px" />
-			<ShowHeaderCheckbox bind:tableState />
-			<SortDirectionSelector bind:tableState />
-			<FullWidthCheckbox bind:tableState />
-			{#if $tableState.paginated}
-				<PageSizeSelector bind:tableState />
-				<PageRangeFormatSelector bind:tableState />
-			{/if}
-		</div>
-		<div class="right-col flex flex-col flex-nowrap gap-2">
-			<div style="height: 38px" />
-			<ShowSortDescriptionCheckbox bind:tableState />
-			<AnimateSortingCheckbox bind:tableState />
-			<TableWrapperCheckbox bind:tableState />
-			{#if $tableState.paginated}
-				<PageNavFormatSelector bind:tableState />
-			{/if}
-		</div>
-	</div>
-{/if}
+<div
+	id="settings-form"
+	style="display: grid; grid-template-columns: repeat({gridColumns}, auto); grid-template-rows: repeat({gridRows}, auto);  gap: 0.75rem;"
+>
+	<ThemeSelector
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 1 : 1}
+		gridCol={$pageWidth.current < 1024 ? 1 : 1}
+		gridColSpan={1}
+	/>
+	<TableHeaderTextField
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 2 : 2}
+		gridCol={$pageWidth.current < 1024 ? 1 : 1}
+		gridColSpan={1}
+	/>
+	<SortByColumnSelector
+		bind:tableState
+		{columnSettings}
+		gridRow={$pageWidth.current < 1024 ? 1 : 3}
+		gridCol={$pageWidth.current < 1024 ? 2 : 1}
+		gridColSpan={1}
+	/>
+	<ClickableRowsCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 4 : 4}
+		gridCol={$pageWidth.current < 1024 ? 2 : 1}
+		gridColSpan={1}
+	/>
+	<ShowHeaderCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 3 : 2}
+		gridCol={$pageWidth.current < 1024 ? 1 : 2}
+		gridColSpan={1}
+	/>
+	<SortDirectionSelector
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 2 : 3}
+		gridCol={$pageWidth.current < 1024 ? 2 : 2}
+		gridColSpan={1}
+	/>
+	<FullWidthCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 5 : 4}
+		gridCol={$pageWidth.current < 1024 ? 1 : 2}
+		gridColSpan={1}
+	/>
+	<ShowSortDescriptionCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 4 : 2}
+		gridCol={$pageWidth.current < 1024 ? 1 : 3}
+		gridColSpan={1}
+	/>
+	<AnimateSortingCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 3 : 3}
+		gridCol={$pageWidth.current < 1024 ? 2 : 3}
+		gridColSpan={1}
+	/>
+	<TableWrapperCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 5 : 4}
+		gridCol={$pageWidth.current < 1024 ? 2 : 3}
+		gridColSpan={1}
+	/>
+	<PaginatedCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 6 : 5}
+		gridCol={$pageWidth.current < 1024 ? 1 : 1}
+		gridColSpan={1}
+	/>
+
+	{#if $tableState.paginated}
+		<RowTypeTextField
+			bind:tableState
+			gridRow={$pageWidth.current < 1024 ? 8 : 6}
+			gridCol={$pageWidth.current < 1024 ? 2 : 1}
+			gridColSpan={1}
+		/>
+		<PageSizeSelector
+			bind:tableState
+			gridRow={$pageWidth.current < 1024 ? 7 : 5}
+			gridCol={$pageWidth.current < 1024 ? 2 : 2}
+			gridColSpan={1}
+		/>
+		<PageRangeFormatSelector
+			bind:tableState
+			gridRow={$pageWidth.current < 1024 ? 8 : 6}
+			gridCol={$pageWidth.current < 1024 ? 1 : 2}
+			gridColSpan={1}
+		/>
+		<PageNavFormatSelector
+			bind:tableState
+			gridRow={$pageWidth.current < 1024 ? 7 : 5}
+			gridCol={$pageWidth.current < 1024 ? 1 : 3}
+			gridColSpan={1}
+		/>
+	{/if}
+</div>
+
+<style lang="postcss">
+	#settings-form {
+		padding: 1.25rem;
+	}
+</style>

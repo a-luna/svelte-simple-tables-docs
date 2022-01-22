@@ -3,6 +3,9 @@
 	import type { SortDirection, TableState } from '@a-luna/svelte-simple-tables/types';
 
 	export let tableState: TableState;
+	export let gridRow: number = 0;
+	export let gridCol: number = 0;
+	export let gridColSpan: number = 1;
 
 	$: mobileStyle = $pageWidth.isMobileDisplay ? 'flex: 1 0 100%; justify-content: normal' : '';
 
@@ -14,7 +17,13 @@
 	}
 </script>
 
-<label for="sort-dir" class="label radio-wrapper">
+<label
+	for="sort-dir"
+	class="label radio-wrapper"
+	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
+		gridColSpan};"
+	data-col={gridCol}
+>
 	<div class="flex flex-row items-center gap-2">
 		<span class="label-text">Sort Direction</span>
 		<div class="btn-group" style={mobileStyle}>
