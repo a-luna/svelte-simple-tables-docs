@@ -332,11 +332,10 @@ The following CSS custom properties can be applied either at the `body` element 
 		background-color: var(--dark-gray4);
     font-weight: 300;
 	  font-family: monospace, monospace;
-	  _font-family: 'courier new', monospace;
 	  font-size: 0.85em;
 		line-height: 1.6;
 		padding: 0.2rem 0.2rem;
-		border-radius: 4px;cv      
+		border-radius: 4px;
 	}
 	
 	:global(code.hljs) {
@@ -344,7 +343,7 @@ The following CSS custom properties can be applied either at the `body` element 
     border-radius: 6px;
 	}
 
-	strong {v
+	strong {
 	  font-weight: bold;
 	}
 
