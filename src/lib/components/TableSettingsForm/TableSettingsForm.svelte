@@ -1,5 +1,4 @@
 <script lang="ts">
-	import FullWidthCheckbox from '$lib/components/TableSettingsForm/Checkboxes/FullWidthCheckbox.svelte';
 	import PaginatedCheckbox from '$lib/components/TableSettingsForm/Checkboxes/PaginatedCheckbox.svelte';
 	import ShowHeaderCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowHeaderCheckbox.svelte';
 	import ShowSortDescriptionCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowSortDescriptionCheckbox.svelte';
@@ -61,11 +60,6 @@
 		gridRow={$pageWidth.current < 1024 ? 2 : 3}
 		gridCol={$pageWidth.current < 1024 ? 2 : 2}
 	/>
-	<FullWidthCheckbox
-		bind:tableState
-		gridRow={$pageWidth.current < 1024 ? 5 : 4}
-		gridCol={$pageWidth.current < 1024 ? 1 : 2}
-	/>
 	<ShowSortDescriptionCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 4 : 2}
@@ -79,7 +73,7 @@
 	<TableWrapperCheckbox
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 5 : 4}
-		gridCol={$pageWidth.current < 1024 ? 2 : 3}
+		gridCol={$pageWidth.current < 1024 ? 1 : 2}
 	/>
 	<PaginatedCheckbox
 		bind:tableState

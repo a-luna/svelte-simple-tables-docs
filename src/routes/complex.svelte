@@ -11,7 +11,6 @@
 		showHeader: true,
 		header: 'Barrels',
 		showSortDescription: true,
-		fullWidth: false,
 		sortBy: 'launch_speed',
 		sortDir: 'desc',
 		tableWrapper: true,

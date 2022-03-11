@@ -1,5 +1,4 @@
 <script lang="ts">
-	import FullWidthCheckbox from '$lib/components/TableSettingsForm/Checkboxes/FullWidthCheckbox.svelte';
 	import PaginatedCheckbox from '$lib/components/TableSettingsForm/Checkboxes/PaginatedCheckbox.svelte';
 	import ShowHeaderCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowHeaderCheckbox.svelte';
 	import ShowSortDescriptionCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowSortDescriptionCheckbox.svelte';
@@ -51,7 +50,6 @@
 		<SortDirectionSelector bind:tableState />
 		<AnimateSortingCheckbox bind:tableState />
 		<ClickableRowsCheckbox bind:tableState />
-		<FullWidthCheckbox bind:tableState />
 		<TableWrapperCheckbox bind:tableState />
 		<PaginatedCheckbox bind:tableState />
 		{#if $tableState.paginated}
