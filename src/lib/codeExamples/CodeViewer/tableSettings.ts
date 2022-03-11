@@ -54,8 +54,8 @@ const getTableSettingsCodeNoPagination = (settings: TableSettings, dataSet: Data
 \t\tsortType: '${settings.sortType}',
 \t\tsortDir: '${settings.sortDir}',
 \t\ttableWrapper: ${settings.tableWrapper},
-\t\tclickableRows: '${settings.clickableRows}',
-\t\tanimateSorting: '${settings.animateSorting}', 
+\t\tclickableRows: ${settings.clickableRows},
+\t\tanimateSorting: ${settings.animateSorting}, 
 \t\tthemeName: '${settings.themeName}',
 \t\tpaginated: ${settings.paginated}
 \t};
