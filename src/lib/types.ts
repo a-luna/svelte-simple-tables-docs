@@ -54,6 +54,7 @@ export interface SizeLengthCssVariables {
 	tableWrapperBorderWidth: string;
 	tableWrapperBorderStyle: string;
 	tableWrapperPadding: string;
+	tableWrapperMargin: string;
 	sortDescriptionFontSize: string;
 	tableHeaderFontSize: string;
 	tableBorderRadius: string;

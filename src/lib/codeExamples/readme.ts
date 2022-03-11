@@ -1,33 +1,33 @@
 export const getTableSettings = (): string => `<script lang="ts">
-import SimpleTable from '@a-luna/svelte-simple-tables';
-import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
-import { columnSettings } from './columnSettings';
-import { data } from './data';
+  import SimpleTable from '@a-luna/svelte-simple-tables';
+  import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
+  import { columnSettings } from './columnSettings';
+  import { data } from './data';
 
-interface VaxData {
-  personId: number;
-  name: string;
-  age: number;
-  birthdate: Date;
-  vaccinated: boolean;
-}
+  interface VaxData {
+    personId: number;
+    name: string;
+    age: number;
+    birthdate: Date;
+    vaccinated: boolean;
+  }
 
-const tableSettings: TableSettings = {
-    tableId: 'vax-status-table',
-    showHeader: true,
-    header: 'Vax Status',
-    showSortDescription: true,
-    sortBy: 'age',
-    sortDir: 'desc',
-    tableWrapper: true,
-    paginated: true,
-    pageRangeFormat: 'compact',
-    pageNavFormat: 'compact',
-    pageSize: 10,
-    pageSizeOptions: [5, 10, 15, 20, 25],
-    themeName: 'darker',
-    rowType: 'vax records',
-};
+  const tableSettings: TableSettings = {
+      tableId: 'vax-status-table',
+      showHeader: true,
+      header: 'Vax Status',
+      showSortDescription: true,
+      sortBy: 'age',
+      sortDir: 'desc',
+      tableWrapper: true,
+      paginated: true,
+      pageRangeFormat: 'compact',
+      pageNavFormat: 'compact',
+      pageSize: 10,
+      pageSizeOptions: [5, 10, 15, 20, 25],
+      themeName: 'darker',
+      rowType: 'vax records',
+  };
 </script>
 
 <SimpleTable {data} {columnSettings} {tableSettings} />

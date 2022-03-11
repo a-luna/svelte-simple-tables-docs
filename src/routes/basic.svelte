@@ -13,7 +13,7 @@
 		showSortDescription: true,
 		sortBy: 'age',
 		sortDir: 'desc',
-		tableWrapper: true,
+		tableWrapper: false,
 		clickableRows: false,
 		animateSorting: true,
 		paginated: true,
