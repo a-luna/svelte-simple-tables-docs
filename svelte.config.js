@@ -23,11 +23,6 @@ const config = {
 			entries: ['*'],
 			onError: 'continue'
 		},
-		vite: {
-			optimizeDeps: {
-				include: ['highlight.js/lib/core']
-			}
-		}
 	}
 };
 
