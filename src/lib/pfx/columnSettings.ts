@@ -40,14 +40,12 @@ function isHomeTeam(pfx: PitchFx): boolean {
 export const pfxDataColumnSettings: ColumnSettings<PitchFx>[] = [
 	{
 		propName: 'batter_name',
-		propType: 'string',
 		tooltip: 'Batter Name',
 		classList: ['text-left'],
 		colValue: batterNameLink
 	},
 	{
 		propName: 'opponent_team_id_bb',
-		propType: 'string',
 		headerText: 'Opp',
 		tooltip: 'Opponent',
 		classList: ['text-center'],
@@ -56,66 +54,56 @@ export const pfxDataColumnSettings: ColumnSettings<PitchFx>[] = [
 	},
 	{
 		propName: 'launch_speed',
-		propType: 'number',
 		headerText: 'Speed',
 		tooltip: 'Launch Speed (mph)',
 		colValue: formatLaunchSpeed
 	},
 	{
 		propName: 'launch_angle',
-		propType: 'number',
 		headerText: 'Angle',
 		tooltip: 'Launch Angle',
 		colValue: formatLaunchAngle
 	},
 	{
 		propName: 'total_distance',
-		propType: 'number',
 		headerText: 'Distance',
 		tooltip: 'Total Distance',
 		colValue: formatLaunchDistance
 	},
 	{
 		propName: 'ab_outcome',
-		propType: 'string',
 		headerText: 'Outcome',
 		tooltip: 'Play Description'
 	},
 	{
 		propName: 'pitcher_name',
-		propType: 'string',
 		headerText: 'Pitcher',
 		tooltip: 'Pitcher Name',
 		colValue: pitcherNameLink
 	},
 	{
 		propName: 'mlbam_pitch_name',
-		propType: 'string',
 		headerText: 'Pitch Type',
 		tooltip: 'Pitch Type',
 		colValue: formatPitchType
 	},
 	{
 		propName: 'start_speed',
-		propType: 'number',
 		headerText: 'Speed',
 		tooltip: 'Pitch Speed',
 		colValue: formatPitchSpeed
 	},
 	{
 		propName: 'inning',
-		propType: 'number',
 		headerText: 'Inn',
 		tooltip: 'Inning'
 	},
 	{
 		propName: 'count',
-		propType: 'string',
 		tooltip: 'Count'
 	},
 	{
 		propName: 'inside_strike_zone',
-		propType: 'number',
 		headerText: 'In/Out',
 		tooltip: 'Inside/Outside Strike Zone',
 		colValue: formatInOutZone

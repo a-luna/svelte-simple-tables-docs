@@ -66,8 +66,8 @@
 		}
 	}
 
-	function handleRowClicked(clickedRowData: T) {
-		rowData = clickedRowData;
+	function handleRowClicked(e: CustomEvent<T>) {
+		rowData = e.detail;
 		showRowDataModal = true;
 	}
 </script>
@@ -94,6 +94,6 @@
 	{columnSettings}
 	{tableSettings}
 	bind:tableState
-	on:rowClicked={(e) => handleRowClicked(e.detail)}
+	on:rowClicked={handleRowClicked}
 />
 <RowDataViewerModal bind:show={showRowDataModal} {rowData} />

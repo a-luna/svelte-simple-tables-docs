@@ -3,7 +3,9 @@
 	import type { TableState, TableTheme } from '@a-luna/svelte-simple-tables/types';
 	import Svelecte, { addFormatter } from 'svelecte/src/Svelecte.svelte';
 
-	export let tableState: TableState;
+	type T = $$Generic;
+
+	export let tableState: TableState<T>;
 	export let gridRow: number = 0;
 	export let gridCol: number = 0;
 	export let gridColSpan: number = 1;

@@ -10,6 +10,7 @@ export function createThemeCssVariablesStore(
 		tableWrapperBorderWidth: settings.tableWrapperBorderWidth,
 		tableWrapperBorderStyle: settings.tableWrapperBorderStyle,
 		tableWrapperPadding: settings.tableWrapperPadding,
+		tableWrapperMargin: settings.tableWrapperMargin,
 		sortDescriptionFontSize: settings.sortDescriptionFontSize,
 		tableHeaderFontSize: settings.tableHeaderFontSize,
 		tableBorderRadius: settings.tableBorderRadius,

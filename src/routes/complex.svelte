@@ -2,11 +2,12 @@
 	import ExampleTable from '$lib/components/ExampleTable.svelte';
 	import { pfxDataColumnSettings } from '$lib/pfx/columnSettings';
 	import { pfxData } from '$lib/pfx/data';
+	import type { PitchFx } from '$lib/pfx/PitchFx';
 	import { dataSet } from '$lib/stores/dataSet';
 	import { createTableStateStore } from '@a-luna/svelte-simple-tables/stores';
 	import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
 
-	const pfxTableSettings: TableSettings = {
+	const pfxTableSettings: TableSettings<PitchFx> = {
 		tableId: 'pfx',
 		showHeader: true,
 		header: 'Barrels',

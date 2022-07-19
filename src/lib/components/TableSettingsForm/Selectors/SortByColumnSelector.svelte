@@ -24,8 +24,8 @@
 		return allColumns.filter((col) => col.sortable);
 	}
 
-	function handleSortByChanged<T>(sortSettings: { value: keyof T }) {
-		const { value } = sortSettings;
+	function handleSortByChanged(e: CustomEvent<keyof T>) {
+		const value = e.detail;
 		if (sortByOptions.map((col) => col.value).includes(value)) {
 			const colHeaderQuery = `#${$tableState.tableId} .sortable[data-stat-name="${String(
 				value
@@ -50,7 +50,7 @@
 			placeholder={'Select column'}
 			searchable={false}
 			options={sortByOptions}
-			on:change={(e) => handleSortByChanged(e.detail)}
+			on:change={handleSortByChanged}
 			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 134px' : ''}
 		/>
 	</div>
