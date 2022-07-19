@@ -10,7 +10,7 @@
 
 	export let title: string;
 	export let columnSettings: ColumnSettings<T>[];
-	export let tableState: TableState;
+	export let tableState: TableState<T>;
 	export let code: string;
 	let showSettingsForm = false;
 	let showCodeViewerModal = false;

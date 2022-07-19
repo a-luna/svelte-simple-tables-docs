@@ -3,7 +3,9 @@
 	import type { TableState } from '@a-luna/svelte-simple-tables/types';
 	import Svelecte from 'svelecte/src/Svelecte.svelte';
 
-	export let tableState: TableState;
+	type T = $$Generic;
+
+	export let tableState: TableState<T>;
 	export let gridRow: number = 0;
 	export let gridCol: number = 0;
 	export let gridColSpan: number = 1;
@@ -36,7 +38,7 @@
 			searchable={false}
 			options={pageSizeMenuItems}
 			on:change={() => handlePageSizeChanged()}
-			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 134px' : ''}
 		/>
 	</div>
 </label>

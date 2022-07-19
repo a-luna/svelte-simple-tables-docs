@@ -15,10 +15,11 @@
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
 	import AnimateSortingCheckbox from './Checkboxes/AnimateSortingCheckbox.svelte';
 	import ClickableRowsCheckbox from './Checkboxes/ClickableRowsCheckbox.svelte';
+	import ExpandToContainerWidthCheckbox from './Checkboxes/ExpandToContainerWidthCheckbox.svelte';
 
 	type T = $$Generic;
 
-	export let tableState: TableState;
+	export let tableState: TableState<T>;
 	export let columnSettings: ColumnSettings<T>[];
 
 	$: gridColumns = $pageWidth.current < 1024 ? 2 : 3;
@@ -74,6 +75,11 @@
 		bind:tableState
 		gridRow={$pageWidth.current < 1024 ? 5 : 4}
 		gridCol={$pageWidth.current < 1024 ? 1 : 2}
+	/>
+	<ExpandToContainerWidthCheckbox
+		bind:tableState
+		gridRow={$pageWidth.current < 1024 ? 5 : 4}
+		gridCol={$pageWidth.current < 1024 ? 2 : 3}
 	/>
 	<PaginatedCheckbox
 		bind:tableState

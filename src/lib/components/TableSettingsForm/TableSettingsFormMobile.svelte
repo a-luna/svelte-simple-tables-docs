@@ -16,10 +16,11 @@
 	import { fly } from 'svelte/transition';
 	import AnimateSortingCheckbox from './Checkboxes/AnimateSortingCheckbox.svelte';
 	import ClickableRowsCheckbox from './Checkboxes/ClickableRowsCheckbox.svelte';
+	import ExpandToContainerWidthCheckbox from './Checkboxes/ExpandToContainerWidthCheckbox.svelte';
 
 	type T = $$Generic;
 
-	export let tableState: TableState;
+	export let tableState: TableState<T>;
 	export let columnSettings: ColumnSettings<T>[];
 	export let showSettingsForm = false;
 	let settingsFormElement: HTMLElement;
@@ -51,6 +52,7 @@
 		<AnimateSortingCheckbox bind:tableState />
 		<ClickableRowsCheckbox bind:tableState />
 		<TableWrapperCheckbox bind:tableState />
+		<ExpandToContainerWidthCheckbox bind:tableState />
 		<PaginatedCheckbox bind:tableState />
 		{#if $tableState.paginated}
 			<PageSizeSelector bind:tableState />

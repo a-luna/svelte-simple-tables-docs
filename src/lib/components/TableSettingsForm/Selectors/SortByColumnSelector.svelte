@@ -7,7 +7,7 @@
 
 	type T = $$Generic;
 
-	export let tableState: TableState;
+	export let tableState: TableState<T>;
 	export let columnSettings: ColumnSettings<T>[];
 	export let gridRow: number = 0;
 	export let gridCol: number = 0;
@@ -15,20 +15,21 @@
 
 	$: sortByOptions = createSelectMenuItems<T>(columnSettings);
 
-	function createSelectMenuItems<T>(columnSettings: ColumnSettings<T>[]): SelectMenuItem[] {
+	function createSelectMenuItems<T>(columnSettings: ColumnSettings<T>[]): SelectMenuItem<T>[] {
 		const allColumns = columnSettings.map((col) => ({
 			value: col.propName,
 			label: col?.headerText ?? getDefaultColHeader(col.propName),
-			type: col.propType,
 			sortable: col?.sortable ?? true
 		}));
 		return allColumns.filter((col) => col.sortable);
 	}
 
-	function handleSortByChanged(sortSettings: { value: string }) {
+	function handleSortByChanged<T>(sortSettings: { value: keyof T }) {
 		const { value } = sortSettings;
 		if (sortByOptions.map((col) => col.value).includes(value)) {
-			const colHeaderQuery = `#${$tableState.tableId} .sortable[data-stat-name="${value}"] .header-content`;
+			const colHeaderQuery = `#${$tableState.tableId} .sortable[data-stat-name="${String(
+				value
+			)}"] .header-content`;
 			document.querySelector<HTMLElement>(colHeaderQuery)?.click();
 		}
 	}
@@ -50,7 +51,7 @@
 			searchable={false}
 			options={sortByOptions}
 			on:change={(e) => handleSortByChanged(e.detail)}
-			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 134px' : ''}
 		/>
 	</div>
 </label>

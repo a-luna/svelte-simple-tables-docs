@@ -9,3 +9,9 @@
 <main class="m-5">
 	<slot />
 </main>
+
+<style lang="postcss">
+	main {
+		--sst-table-wrapper-margin: 0 auto;
+	}
+</style>

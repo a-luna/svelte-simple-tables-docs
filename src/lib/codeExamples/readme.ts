@@ -2,30 +2,24 @@ export const getTableSettings = (): string => `<script lang="ts">
   import SimpleTable from '@a-luna/svelte-simple-tables';
   import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
   import { columnSettings } from './columnSettings';
+  import type { VaxData } from './data';
   import { data } from './data';
 
-  interface VaxData {
-    personId: number;
-    name: string;
-    age: number;
-    birthdate: Date;
-    vaccinated: boolean;
-  }
-
-  const tableSettings: TableSettings = {
+  const tableSettings: TableSettings<VaxData> = {
       tableId: 'vax-status-table',
+      themeName: 'darker',
+      sortBy: 'age',
+      sortDir: 'desc',
       showHeader: true,
       header: 'Vax Status',
       showSortDescription: true,
-      sortBy: 'age',
-      sortDir: 'desc',
       tableWrapper: true,
+      expandToContainerWidth: true,
       paginated: true,
-      pageRangeFormat: 'compact',
-      pageNavFormat: 'compact',
       pageSize: 10,
       pageSizeOptions: [5, 10, 15, 20, 25],
-      themeName: 'darker',
+      pageRangeFormat: 'compact',
+      pageNavFormat: 'compact',
       rowType: 'vax records',
   };
 </script>
@@ -34,7 +28,14 @@ export const getTableSettings = (): string => `<script lang="ts">
 `;
 
 export const getDataExample = (): string => `// data.ts
-// contains 21 items, only showing first and last item for brevity
+interface VaxData {
+  personId: number;
+  name: string;
+  age: number;
+  birthdate: Date;
+  vaccinated: boolean;
+}
+
 export const data: VaxData[] = [
   {
     personId: 1,
@@ -43,7 +44,7 @@ export const data: VaxData[] = [
     birthdate: new Date(2010, 7, 12),
     vaccinated: true,
   },
-  ...
+  ... // contains 21 items, only showing first and last item for brevity
   {
     personId: 21,
     name: 'Ulysses',
@@ -54,30 +55,25 @@ export const data: VaxData[] = [
 ];
 `;
 
-export const getColumnSettings = (): string => `
-// columnSettings.ts
+export const getColumnSettings = (): string => `// columnSettings.ts
 import type { ColumnSettings } from '@a-luna/svelte-simple-tables/types';
 import type { VaxData } from './data';
 
 export const columnSettings: ColumnSettings<VaxData>[] = [
   {
     propName: 'name',
-    propType: 'string',
     tooltip: 'First Name',
     colValue: (data: VaxData): string => \`<a href="/person/\${data.personId}">\${data.name}</a>\`,
   },
   {
     propName: 'birthdate',
-    propType: 'date',
     colValue: (data: VaxData): string => data.birthdate.toDateString(),
   },
   {
     propName: 'age',
-    propType: 'number',
   },
   {
     propName: 'vaccinated',
-    propType: 'boolean',
     headerText: 'Vax?',
     tooltip: 'Vaccination Status',
     classList: ['text-center'],
@@ -85,7 +81,6 @@ export const columnSettings: ColumnSettings<VaxData>[] = [
   },
   {
     propName: 'personId',
-    propType: 'number',
     headerText: 'ID',
     sortable: false,
   },

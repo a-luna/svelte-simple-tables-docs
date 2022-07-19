@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { codeExample } from '$lib/stores/activeContent';
 	import Highlight, { HighlightSvelte } from 'svelte-highlight';
-	import typescript from 'svelte-highlight/src/languages/typescript';
-	import irBlack from 'svelte-highlight/src/styles/ir-black';
+	import typescript from 'svelte-highlight/languages/typescript';
+	import irBlack from 'svelte-highlight/styles/ir-black';
 
 	export let code: string;
 </script>

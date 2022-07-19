@@ -157,7 +157,7 @@ body {
 }
 
 #settings-form .mobile .label-text {
-	flex: 0 0 120px;
+	flex: 0 0 160px;
 }
 
 #settings-form [data-col='1'] .label-text {
@@ -165,7 +165,7 @@ body {
 }
 
 #settings-form [data-col='2'] .label-text {
-	width: 125px;
+	width: 175px;
 }
 
 .checkbox-wrapper {
@@ -229,6 +229,6 @@ tr:last-child td:last-child {
 	}
 
 	#settings-form [data-col='3'] .label-text {
-		width: 132px;
+		width: 175px;
 	}
 }

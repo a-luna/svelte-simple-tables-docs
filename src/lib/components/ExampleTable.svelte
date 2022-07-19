@@ -18,6 +18,7 @@
 		TableSettings,
 		TableState
 	} from '@a-luna/svelte-simple-tables/types';
+import { getSortType } from '@a-luna/svelte-simple-tables/util';
 	import RowDataViewerModal from './Modals/RowDataViewerModal.svelte';
 
 	type T = $$Generic;
@@ -25,18 +26,18 @@
 	export let title: string;
 	export let data: T[];
 	export let columnSettings: ColumnSettings<T>[];
-	export let tableSettings: TableSettings;
-	export let tableState: TableState;
+	export let tableSettings: TableSettings<T>;
+	export let tableState: TableState<T>;
 	let rowData: T;
 	let showRowDataModal = false;
 
 	$active = 'table-settings';
-	$tableState.sortType = columnSettings.find((c) => c.propName === $tableState.sortBy).propType;
+	$tableState.sortType = data.length ? getSortType(data[0], $tableState.sortBy) : 'unsorted';
 	$: code = getCodeExample($codeExample, $tableState, $dataSet);
 
 	export const getCodeExample = (
 		code: CodeExample,
-		settings: TableSettings,
+		settings: TableSettings<T>,
 		dataSet: DataSet
 	): string =>
 		code === 'table-component'

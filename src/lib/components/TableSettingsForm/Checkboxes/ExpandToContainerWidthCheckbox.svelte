@@ -10,18 +10,18 @@
 </script>
 
 <label
-	for="show-header"
+	for="full-width"
 	class="cursor-pointer label checkbox-wrapper"
 	style="grid-row-start: {gridRow}; grid-column-start: {gridCol}; grid-column-end: {gridCol +
 		gridColSpan};"
 	data-col={gridCol}
 >
-	<span class="label-text">Show Header</span>
+	<span class="label-text">Expand to Fit Container</span>
 	<input
-		id="show-header"
-		name="show-header"
+		id="full-width"
+		name="full-width"
 		type="checkbox"
-		bind:checked={$tableState.showHeader}
+		bind:checked={$tableState.expandToContainerWidth}
 		class="checkbox"
 	/>
 </label>

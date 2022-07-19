@@ -38,10 +38,9 @@ export class HslColor {
 	};
 }
 
-export interface SelectMenuItem {
-	value: string;
+export interface SelectMenuItem<T> {
+	value: keyof T;
 	label: string;
-	type: string;
 }
 
 export interface Alert {

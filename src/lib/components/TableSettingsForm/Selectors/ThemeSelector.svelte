@@ -43,7 +43,7 @@
 			searchable={false}
 			options={themes}
 			renderer="theme-items"
-			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 175px' : ''}
+			style={$pageWidth.isMobileDisplay ? 'flex: 0 0 134px' : ''}
 		/>
 	</div>
 </label>

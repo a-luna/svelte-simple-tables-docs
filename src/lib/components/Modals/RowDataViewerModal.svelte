@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ModalContainer from '$lib/components/Modals/ModalContainer.svelte';
 	import Highlight from 'svelte-highlight';
-	import json from 'svelte-highlight/src/languages/json';
-	import irBlack from 'svelte-highlight/src/styles/ir-black';
+	import json from 'svelte-highlight/languages/json';
+	import irBlack from 'svelte-highlight/styles/ir-black';
 
 	type T = $$Generic;
 
