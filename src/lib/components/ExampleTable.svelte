@@ -5,6 +5,7 @@
 		getPitchFxTypeCode,
 		getTableSettingsCode
 	} from '$lib/codeExamples/CodeViewer';
+	import { getVaxDataTypeCode } from '$lib/codeExamples/CodeViewer/VaxData';
 	import TableTester from '$lib/components/TableTester/TableTester.svelte';
 	import TableTesterMobile from '$lib/components/TableTester/TableTesterMobile.svelte';
 	import { active, codeExample } from '$lib/stores/activeContent';
@@ -18,7 +19,7 @@
 		TableSettings,
 		TableState
 	} from '@a-luna/svelte-simple-tables/types';
-import { getSortType } from '@a-luna/svelte-simple-tables/util';
+	import { getSortType } from '@a-luna/svelte-simple-tables/util';
 	import RowDataViewerModal from './Modals/RowDataViewerModal.svelte';
 
 	type T = $$Generic;
@@ -48,6 +49,8 @@ import { getSortType } from '@a-luna/svelte-simple-tables/util';
 			? getDataCode(dataSet)
 			: code === 'pitchfx'
 			? getPitchFxTypeCode()
+			: code === 'vaxdata'
+			? getVaxDataTypeCode()
 			: '';
 
 	async function copyCodeToClipboard() {

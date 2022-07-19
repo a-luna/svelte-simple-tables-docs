@@ -1,6 +1,8 @@
 import type { DataSet } from '$lib/types';
 import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
 
+const getDataTypeName = (dataSet: DataSet): string => (dataSet === 'pfx' ? 'PitchFX' : 'VaxData');
+
 export const getTableSettingsCode = (settings: TableSettings, dataSet: DataSet): string =>
 	settings.paginated
 		? getTableSettingsCodeWithPagination(settings, dataSet)
@@ -11,10 +13,12 @@ const getTableSettingsCodeWithPagination = (settings: TableSettings, dataSet: Da
 \timport SimpleTable from '@a-luna/svelte-simple-tables';
 \timport type { TableSettings } from '@a-luna/svelte-simple-tables/types';
 \timport { columnSettings } from './columnSettings';
+\timport type { ${getDataTypeName(dataSet)} } from './${getDataTypeName(dataSet)}';
 \timport { data } from './data';
 
-\tconst tableSettings: TableSettings = {
+\tconst tableSettings: TableSettings<${getDataTypeName(dataSet)}> = {
 \t\ttableId: '${settings.tableId}',
+\t\tthemeName: '${settings.themeName}',
 \t\tshowHeader: ${settings.showHeader},
 \t\theader: '${settings.header}',
 \t\tshowSortDescription: ${settings.showSortDescription},
@@ -22,12 +26,13 @@ const getTableSettingsCodeWithPagination = (settings: TableSettings, dataSet: Da
 \t\tsortType: '${settings.sortType}',
 \t\tsortDir: '${settings.sortDir}',
 \t\ttableWrapper: ${settings.tableWrapper},
-\t\tthemeName: '${settings.themeName}',
 \t\tclickableRows: '${settings.clickableRows}',
 \t\tanimateSorting: '${settings.animateSorting}',
 \t\tpaginated: ${settings.paginated},
 \t\tpageSize: ${settings.pageSize},
-\t\tpageSizeOptions: [${settings.pageSizeOptions}],                                                                                                                                                                                                                                                                                                                             
+\t\tpageSizeOptions: [${
+		settings.pageSizeOptions
+	}],                                                                                                                                                                                                                                                                                                                             
 \t\tpageRangeFormat: '${settings.pageRangeFormat}',
 \t\tpageNavFormat: '${settings.pageNavFormat}',
 \t\trowType: '${settings.rowType}'
@@ -43,10 +48,12 @@ const getTableSettingsCodeNoPagination = (settings: TableSettings, dataSet: Data
 \timport SimpleTable from '@a-luna/svelte-simple-tables';
 \timport type { TableSettings } from '@a-luna/svelte-simple-tables/types';
 \timport { columnSettings } from './columnSettings';
+\timport type { ${getDataTypeName(dataSet)} } from './${getDataTypeName(dataSet)}';
 \timport { data } from './data';
 
-\tconst tableSettings: TableSettings = {
-\t\ttableId: '${settings.tableId}',
+\tconst tableSettings: TableSettings<${getDataTypeName(dataSet)}> = {
+\t\ttableId: '${settings.tableId}', 
+\t\tthemeName: '${settings.themeName}',
 \t\tshowHeader: ${settings.showHeader},
 \t\theader: '${settings.header}',
 \t\tshowSortDescription: ${settings.showSortDescription},
@@ -55,8 +62,7 @@ const getTableSettingsCodeNoPagination = (settings: TableSettings, dataSet: Data
 \t\tsortDir: '${settings.sortDir}',
 \t\ttableWrapper: ${settings.tableWrapper},
 \t\tclickableRows: ${settings.clickableRows},
-\t\tanimateSorting: ${settings.animateSorting}, 
-\t\tthemeName: '${settings.themeName}',
+\t\tanimateSorting: ${settings.animateSorting},
 \t\tpaginated: ${settings.paginated}
 \t};
 </script>

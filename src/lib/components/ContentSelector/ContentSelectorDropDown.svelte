@@ -26,6 +26,8 @@
 		];
 		if ($dataSet === 'pfx') {
 			menuItems.push({ label: 'PitchFx.ts', value: 'pitchfx' });
+		} else {
+			menuItems.push({ label: 'VaxData.ts', value: 'vaxdata' });
 		}
 		return menuItems;
 	}

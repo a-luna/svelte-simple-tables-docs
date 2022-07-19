@@ -11,6 +11,7 @@
 	$: columnSettingsCodeSelected = $active === 'code-viewer' && $codeExample === 'column-settings';
 	$: tableDataCodeSelected = $active === 'code-viewer' && $codeExample === 'data';
 	$: pitchFxInterfaceCodeSelected = $active === 'code-viewer' && $codeExample === 'pitchfx';
+	$: vaxDataInterfaceCodeSelected = $active === 'code-viewer' && $codeExample === 'vaxdata';
 
 	function showSettingsForm() {
 		$active = 'table-settings';
@@ -49,6 +50,12 @@
 				class="content-tab"
 				class:selected-tab={pitchFxInterfaceCodeSelected}
 				on:click={() => showCodeViewer('pitchfx')}>PitchFx.ts</span
+			>
+		{:else}
+			<span
+				class="content-tab"
+				class:selected-tab={vaxDataInterfaceCodeSelected}
+				on:click={() => showCodeViewer('vaxdata')}>VaxData.ts</span
 			>
 		{/if}
 	</div>

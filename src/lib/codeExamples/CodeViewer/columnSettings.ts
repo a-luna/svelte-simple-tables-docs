@@ -5,28 +5,24 @@ export const getColumnSettingsCode = (dataSet: DataSet): string =>
 
 const getVaxColumnSettingsCode = (): string =>
 	`import type { ColumnSettings } from '@a-luna/svelte-simple-tables/types';
-import type { VaxData } from './data';
+import type { VaxData } from './VaxData';
 
 export const vaxDataColumnSettings: ColumnSettings<VaxData>[] = [
 \t{
 \t\tpropName: 'name',
-\t\tpropType: 'string',
 \t\ttooltip: 'First Name',
 \t\tclassList: ['text-left'],
 \t\tcolValue: (data: VaxData): string => \`<a href="/person/\${data.personId}">\${data.name}</a>\`
 \t},
 \t{
 \t\tpropName: 'birthdate',
-\t\tpropType: 'date',
 \t\tcolValue: (data: VaxData): string => data.birthdate.toDateString()
 \t},
 \t{
 \t\tpropName: 'age',
-\t\tpropType: 'number'
 \t},
 \t{
 \t\tpropName: 'vaccinated',
-\t\tpropType: 'boolean',
 \t\theaderText: 'Vax?',
 \t\ttooltip: 'Vaccination Status',
 \t\tclassList: ['text-center'],
@@ -34,7 +30,6 @@ export const vaxDataColumnSettings: ColumnSettings<VaxData>[] = [
 \t},
 \t{
 \t\tpropName: 'personId',
-\t\tpropType: 'number',
 \t\theaderText: 'ID',
 \t\tsortable: false
 \t}
@@ -83,7 +78,7 @@ export const BROOKS_BBREF_TEAM_ID_MAP = {
 
 function getHomeTeamIdFromBrooksGameId(game_id: string): string {
 \tconst BB_GAME_ID_REGEX =
-\t\t/gid_(?<year>\d{4,4})_(?<month>\d{2,2})_(?<day>\d{2,2})_(?<away_team>[a-z]+)mlb_(?<home_team>[a-z]+)mlb_(?<game_num>\d)/;
+\t\t/gid_(?<year>\\d{4,4})_(?<month>\\d{2,2})_(?<day>\\d{2,2})_(?<away_team>[a-z]+)mlb_(?<home_team>[a-z]+)mlb_(?<game_num>\\d)/;
 \tconst match = BB_GAME_ID_REGEX.exec(game_id);
 \treturn match?.groups?.home_team ?? '';
 }
@@ -140,14 +135,12 @@ function isHomeTeam(pfx: PitchFx): boolean {
 export const columnSettings: ColumnSettings<PitchFx>[] = [
 \t{
 \t\tpropName: 'batter_name',
-\t\tpropType: 'string',
 \t\ttooltip: 'Batter Name',
 \t\tclassList: ['text-left'],
 \t\tcolValue: batterNameLink
 \t},
 \t{
 \t\tpropName: 'opponent_team_id_bb',
-\t\tpropType: 'string',
 \t\theaderText: 'Opp',
 \t\ttooltip: 'Opponent',
 \t\tclassList: ['text-center'],
@@ -156,66 +149,56 @@ export const columnSettings: ColumnSettings<PitchFx>[] = [
 \t},
 \t{
 \t\tpropName: 'launch_speed',
-\t\tpropType: 'number',
 \t\theaderText: 'Speed',
 \t\ttooltip: 'Launch Speed (mph)',
 \t\tcolValue: formatLaunchSpeed
 \t},
 \t{
 \t\tpropName: 'launch_angle',
-\t\tpropType: 'number',
 \t\theaderText: 'Angle',
 \t\ttooltip: 'Launch Angle',
 \t\tcolValue: formatLaunchAngle
 \t},
 \t{
 \t\tpropName: 'total_distance',
-\t\tpropType: 'number',
 \t\theaderText: 'Distance',
 \t\ttooltip: 'Total Distance',
 \t\tcolValue: formatLaunchDistance
 \t},
 \t{
 \t\tpropName: 'ab_outcome',
-\t\tpropType: 'string',
 \t\theaderText: 'Outcome',
 \t\ttooltip: 'Play Description'
 \t},
 \t{
 \t\tpropName: 'pitcher_name',
-\t\tpropType: 'string',
 \t\theaderText: 'Pitcher',
 \t\ttooltip: 'Pitcher Name',
 \t\tcolValue: pitcherNameLink
 \t},
 \t{
 \t\tpropName: 'mlbam_pitch_name',
-\t\tpropType: 'string',
 \t\theaderText: 'Pitch Type',
 \t\ttooltip: 'Pitch Type',
 \t\tcolValue: formatPitchType
 \t},
 \t{
 \t\tpropName: 'start_speed',
-\t\tpropType: 'number',
 \t\theaderText: 'Speed',
 \t\ttooltip: 'Pitch Speed',
 \t\tcolValue: formatPitchSpeed
 \t},
 \t{
 \t\tpropName: 'inning',
-\t\tpropType: 'number',
 \t\theaderText: 'Inn',
 \t\ttooltip: 'Inning'
 \t},
 \t{
 \t\tpropName: 'count',
-\t\tpropType: 'string',
 \t\ttooltip: 'Count'
 \t},
 \t{
 \t\tpropName: 'inside_strike_zone',
-\t\tpropType: 'number',
 \t\theaderText: 'In/Out',
 \t\ttooltip: 'Inside/Outside Strike Zone',
 \t\tcolValue: formatInOutZone

@@ -3,16 +3,9 @@ import type { DataSet } from '$lib/types';
 export const getDataCode = (dataSet: DataSet): string =>
 	dataSet === 'vax' ? getVaxDataCode() : getPfxDataCode();
 
-const getVaxDataCode = (): string =>
-	`export interface VaxData {
-\tpersonId: number;
-\tname: string;
-\tage: number;
-\tbirthdate: Date;
-\tvaccinated: boolean;
-}
+const getVaxDataCode = (): string => `import type { VaxData } from './VaxData';
 
-export const data: VaxData[] = [
+export const data:: VaxData[] = [
 \t{
 \t\tpersonId: 1,
 \t\tname: 'Alice',
@@ -163,8 +156,7 @@ export const data: VaxData[] = [
 ];
   `;
 
-const getPfxDataCode = (): string =>
-	`import type { PitchFx } from './PitchFx';
+const getPfxDataCode = (): string => `import type { PitchFx } from './PitchFx';
 
 export const data: PitchFx[] = [
 \t{
