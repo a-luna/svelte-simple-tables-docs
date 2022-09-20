@@ -40,6 +40,7 @@
 		background-color: var(--dark-gray1);
 		border: 2px solid var(--black4);
 		border-radius: 6px;
+		min-width: 275px;
 		max-width: 85%;
 		max-height: 90%;
 	}

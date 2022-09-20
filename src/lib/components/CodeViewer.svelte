@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { codeExample } from '$lib/stores/activeContent';
 	import Highlight, { HighlightSvelte } from 'svelte-highlight';
+	import json from 'svelte-highlight/languages/json';
 	import typescript from 'svelte-highlight/languages/typescript';
 	import irBlack from 'svelte-highlight/styles/ir-black';
 
@@ -14,6 +15,8 @@
 <div class="code-viewer overflow-auto">
 	{#if $codeExample === 'table-component'}
 		<HighlightSvelte {code} />
+	{:else if $codeExample === 'theme-palettes'}
+		<Highlight language={json} {code} />
 	{:else}
 		<Highlight language={typescript} {code} />
 	{/if}

@@ -1,4 +1,7 @@
 <script lang="ts">
+	import AnimateSortingCheckbox from '$lib/components/TableSettingsForm/Checkboxes/AnimateSortingCheckbox.svelte';
+	import ClickableRowsCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ClickableRowsCheckbox.svelte';
+	import ExpandToContainerWidthCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ExpandToContainerWidthCheckbox.svelte';
 	import PaginatedCheckbox from '$lib/components/TableSettingsForm/Checkboxes/PaginatedCheckbox.svelte';
 	import ShowHeaderCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowHeaderCheckbox.svelte';
 	import ShowSortDescriptionCheckbox from '$lib/components/TableSettingsForm/Checkboxes/ShowSortDescriptionCheckbox.svelte';
@@ -13,9 +16,6 @@
 	import TableHeaderTextField from '$lib/components/TableSettingsForm/TextFields/TableHeaderTextField.svelte';
 	import { pageWidth } from '@a-luna/svelte-simple-tables/stores';
 	import type { ColumnSettings, TableState } from '@a-luna/svelte-simple-tables/types';
-	import AnimateSortingCheckbox from './Checkboxes/AnimateSortingCheckbox.svelte';
-	import ClickableRowsCheckbox from './Checkboxes/ClickableRowsCheckbox.svelte';
-	import ExpandToContainerWidthCheckbox from './Checkboxes/ExpandToContainerWidthCheckbox.svelte';
 
 	type T = $$Generic;
 

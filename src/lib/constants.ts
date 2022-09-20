@@ -3,7 +3,7 @@ import type { ThemeCssVariables } from '$lib/types';
 export const HSL_COLOR_REGEX =
 	/hsl\((?<hue>\d{1,3}), (?<saturation>\d{1,3})%, (?<lightness>\d{1,3})%\)/;
 
-export const LightThemeCssVariables: ThemeCssVariables = {
+export const lightThemeCssVariables: ThemeCssVariables = {
 	fontSize: '13px',
 	tableWrapperBorderWidth: '2px',
 	tableWrapperBorderStyle: 'dotted',
@@ -56,7 +56,7 @@ export const LightThemeCssVariables: ThemeCssVariables = {
 	buttonFocusBorderColor: 'transparent'
 };
 
-export const LighterThemeCssVariables: ThemeCssVariables = {
+export const lighterThemeCssVariables: ThemeCssVariables = {
 	fontSize: '13px',
 	tableWrapperBorderWidth: '2px',
 	tableWrapperBorderStyle: 'dotted',
@@ -109,7 +109,7 @@ export const LighterThemeCssVariables: ThemeCssVariables = {
 	buttonFocusBorderColor: 'hsla(218, 80%, 2%, 0.8)'
 };
 
-export const DarkThemeCssVariables: ThemeCssVariables = {
+export const darkThemeCssVariables: ThemeCssVariables = {
 	fontSize: '13px',
 	tableWrapperBorderWidth: '2px',
 	tableWrapperBorderStyle: 'dotted',
@@ -162,7 +162,7 @@ export const DarkThemeCssVariables: ThemeCssVariables = {
 	buttonFocusBorderColor: 'transparent'
 };
 
-export const DarkerThemeCssVariables: ThemeCssVariables = {
+export const darkerThemeCssVariables: ThemeCssVariables = {
 	fontSize: '13px',
 	tableWrapperBorderWidth: '2px',
 	tableWrapperBorderStyle: 'dotted',

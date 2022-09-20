@@ -7,7 +7,7 @@ const getVaxColumnSettingsCode = (): string =>
 	`import type { ColumnSettings } from '@a-luna/svelte-simple-tables/types';
 import type { VaxData } from './VaxData';
 
-export const vaxDataColumnSettings: ColumnSettings<VaxData>[] = [
+export const columnSettings: ColumnSettings<VaxData>[] = [
 \t{
 \t\tpropName: 'name',
 \t\ttooltip: 'First Name',

@@ -5,7 +5,7 @@ export const getDataCode = (dataSet: DataSet): string =>
 
 const getVaxDataCode = (): string => `import type { VaxData } from './VaxData';
 
-export const data:: VaxData[] = [
+export const data: VaxData[] = [
 \t{
 \t\tpersonId: 1,
 \t\tname: 'Alice',

@@ -1,10 +1,16 @@
-import { HSL_COLOR_REGEX } from './constants';
+import { HSL_COLOR_REGEX } from '$lib/constants';
 
 export type WithTarget<Event, Target> = Event & { currentTarget: Target };
 export type DataSet = 'vax' | 'pfx';
 export type AlertState = 'none' | 'info' | 'success' | 'warning' | 'error';
 export type ActiveContent = 'docs' | 'table-settings' | 'code-viewer' | 'theme-editor';
-export type CodeExample = 'table-component' | 'column-settings' | 'data' | 'pitchfx' | 'vaxdata';
+export type CodeExample =
+	| 'table-component'
+	| 'column-settings'
+	| 'data'
+	| 'pitchfx'
+	| 'vaxdata'
+	| 'theme-palettes';
 
 export type ButtonColor =
 	| 'red'
@@ -69,7 +75,7 @@ export interface TableWrapperColorsCssVariables {
 	tableWrapperBorderColor: string;
 }
 
-export interface FontBorderColorsCssVariables {
+export interface FontAndBorderColorsCssVariables {
 	textColor: string;
 	linkTextColor: string;
 	linkHoverTextColor: string;
@@ -118,7 +124,20 @@ export interface ButtonColorsCssVariables {
 
 export type ThemeCssVariables = SizeLengthCssVariables &
 	TableWrapperColorsCssVariables &
-	FontBorderColorsCssVariables &
+	FontAndBorderColorsCssVariables &
 	ColumnHeaderColorsCssVariables &
 	TableBodyColorsCssVariables &
 	ButtonColorsCssVariables;
+
+export interface ThemeColorPalettes {
+	tableWrapperColors: TableWrapperColorsCssVariables;
+	fontAndBorderColors: FontAndBorderColorsCssVariables;
+	columnHeaderColors: ColumnHeaderColorsCssVariables;
+	tableBodyColors: TableBodyColorsCssVariables;
+	buttonColors: ButtonColorsCssVariables;
+}
+
+export interface EditableTableTheme {
+	tableLayout: SizeLengthCssVariables;
+	colorPalletes: ThemeColorPalettes;
+}

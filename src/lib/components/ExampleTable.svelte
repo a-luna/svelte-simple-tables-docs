@@ -6,6 +6,7 @@
 		getTableSettingsCode
 	} from '$lib/codeExamples/CodeViewer';
 	import { getVaxDataTypeCode } from '$lib/codeExamples/CodeViewer/VaxData';
+	import RowDataViewerModal from '$lib/components/Modals/RowDataViewerModal.svelte';
 	import TableTester from '$lib/components/TableTester/TableTester.svelte';
 	import TableTesterMobile from '$lib/components/TableTester/TableTesterMobile.svelte';
 	import { active, codeExample } from '$lib/stores/activeContent';
@@ -20,7 +21,6 @@
 		TableState
 	} from '@a-luna/svelte-simple-tables/types';
 	import { getSortType } from '@a-luna/svelte-simple-tables/util';
-	import RowDataViewerModal from './Modals/RowDataViewerModal.svelte';
 
 	type T = $$Generic;
 
