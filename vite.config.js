@@ -6,13 +6,12 @@ const config = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			$lib: path.resolve('src/lib'),
-			$components: path.resolve('src/lib/components'),
-		},
+			$components: path.resolve('src/lib/components')
+		}
 	},
-    optimizeDeps: {
-        include: ["highlight.js", "highlight.js/lib/core"]
-    },
+	optimizeDeps: {
+		include: ['highlight.js', 'highlight.js/lib/core']
+	}
 };
 
 export default config;

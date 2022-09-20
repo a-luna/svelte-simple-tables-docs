@@ -1,9 +1,13 @@
 <script lang="ts">
 	import ExampleTable from '$lib/components/ExampleTable.svelte';
+	import { darkerThemeCssVariables } from '$lib/constants';
 	import { dataSet } from '$lib/stores/dataSet';
+	import { createLocalStorageValue } from '$lib/stores/util';
+	import { importTableTheme } from '$lib/themes';
+	import type { ThemeColorPalettes } from '$lib/types';
 	import { vaxDataColumnSettings } from '$lib/vax/columnSettings';
-	import { vaxData } from '$lib/vax/data';
 	import type { VaxData } from '$lib/vax/data';
+	import { vaxData } from '$lib/vax/data';
 	import { createTableStateStore } from '@a-luna/svelte-simple-tables/stores';
 	import type { TableSettings } from '@a-luna/svelte-simple-tables/types';
 
@@ -28,8 +32,13 @@
 	let tableState = createTableStateStore(vaxData.length, vaxTableSettings);
 
 	$: $dataSet = 'vax';
-</script>
 
+	const darkTheme = importTableTheme(darkerThemeCssVariables);
+	const customTheme = createLocalStorageValue<ThemeColorPalettes>(
+		'custom-theme',
+		darkTheme.colorPalletes
+	);
+</script>
 
 <ExampleTable
 	title={'Basic Example'}

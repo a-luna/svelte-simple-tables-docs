@@ -22,7 +22,8 @@
 </script>
 
 <svelte:head>
-{@html irBlack}
+	{@html irBlack}
+	<title>svelte-simple-tables</title>
 </svelte:head>
 
 <h1>svelte-simple-tables</h1>
