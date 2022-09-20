@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-netlify';
 import { mdsvex } from 'mdsvex';
 import preprocess from 'svelte-preprocess';
 
@@ -13,7 +13,9 @@ const config = {
 		}),
 		mdsvex({ extensions: ['.svx', '.md'] })
 	],
-
+	serviceWorker: {
+		register: false
+	},
 	kit: {
 		adapter: adapter()
 	}
