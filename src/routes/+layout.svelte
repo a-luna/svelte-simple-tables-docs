@@ -2,6 +2,8 @@
 	import Alert from '$lib/components/Alert.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import '../app.css';
+
+	export const prerender = true;
 </script>
 
 <Alert />
